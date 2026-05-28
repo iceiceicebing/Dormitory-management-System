@@ -22,6 +22,7 @@ typedef struct StudentInfo {
 	// 学生信息结构体
 	char name[50]; // 学生姓名
 	char ID[13]; // 学号
+	char gender [5];//性别
 	char school_name[50] ; // 学院
 	char class_name[50]; // 班级
 	char dorm_building[20]; // 宿舍楼

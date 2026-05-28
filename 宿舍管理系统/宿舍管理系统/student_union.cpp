@@ -100,9 +100,121 @@ Status FindUnionMember(StudentList L, char ID[13], char password[50], StudentNod
 	return ERROR; // 学生不存在
 }
 
-// 剩下的为学生会任务端具体的操作函数……
+Status CreateInspection(InspectionList& L, InspectionInfo e) 
+{// 在学生会任务表末尾插入新的学生会任务
+	InspectionList p = L;
+	while (p->next) p = p->next;
 
-void StudentUnionSystem(StudentNode* union_member) {
-	// ……该函数为学生会端总操作函数，从这里可以调用任一个学生会端操作函数
-	// 待开发
+	InspectionList s = (InspectionNode*)malloc(sizeof(InspectionNode));
+	s->data = e;
+	s->next = NULL;
+	p->next = s;
+	return OK;
+}
+
+Status FindInspection(InspectionList L, char building[], char room[], InspectionNode*& task) 
+{// 根据楼栋、房间号查找检查任务
+	InspectionNode* p = L->next;
+	while (p) {
+		if (strcmp(p->data.dorm_building, building) == 0 &&
+			strcmp(p->data.room_number, room) == 0)
+		{
+			task = p;
+			return OK;
+		}
+		p = p->next;
+	}
+	return ERROR;
+}
+
+Status ModifyInspectionScore(InspectionList& L, char building[], char room[], float new_score) 
+{// 修改评分（打分）
+	InspectionNode* p = NULL;
+	if (FindInspection(L, building, room, p) != OK)
+		return ERROR;
+
+	p->data.score = new_score;
+	p->data.is_finished = 1;
+	return OK;
+}
+
+Status DeleteInspection(InspectionList& L, char building[], char room[])
+ {// 删除一条检查任务
+	InspectionNode *p = L->next, *q = L;
+	while (p) {
+		if (strcmp(p->data.dorm_building, building) == 0 &&
+			strcmp(p->data.room_number, room) == 0)
+		{
+			q->next = p->next;
+			free(p);
+			return OK;
+		}
+		q = p;
+		p = p->next;
+	}
+	return ERROR;
+}
+
+void ShowAllInspections(InspectionList L)
+ {// 展示所有检查任务
+	InspectionNode* p = L->next;
+	if (!p) 
+	{
+		printf("暂无检查任务\n");
+		return;
+	}
+	while (p)
+	 {
+		printf("日期：%s | 楼栋：%s | 房间：%s | 分数：%.1f | 状态：%s\n",
+			p->data.time,
+			p->data.dorm_building,
+			p->data.room_number,
+			p->data.score,
+			p->data.is_finished ? "已打分" : "未打分");
+		p = p->next;
+	}
+}
+
+// 学生会主界面
+void StudentUnionSystem(StudentNode* union_member) 
+{
+	int choice;
+	float score;
+	char building[20], room[10];
+	InspectionInfo task;
+	InspectionList L = NULL;
+
+	LoadInspectionList(L);
+	printf("\n===== 学生会评分系统 =====\n");
+	printf("当前登录：%s\n", union_member->data.name);
+	printf("1. 查看所有检查任务\n");
+	printf("2. 新增检查任务\n");
+	printf("3. 给宿舍打分\n");
+	printf("4. 删除检查任务\n");
+	printf("5. 保存并退出\n");
+	printf("请输入操作：");
+	scanf("%d", &choice);
+
+	switch (choice) 
+	{
+	case 1:
+		ShowAllInspections(L);
+		break;
+	case 3:
+		printf("输入楼栋：");
+		scanf("%s", building);
+		printf("输入房间号：");
+		scanf("%s", room);
+		printf("输入分数：");
+		scanf("%f", &score);
+		if (ModifyInspectionScore(L, building, room, score) == OK)
+			printf("打分成功！\n");
+		else
+			printf("任务不存在\n");
+		break;
+	case 5:
+		SaveInspectionList(L);
+		printf("已保存\n");
+		break;
+	}
 }
