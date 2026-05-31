@@ -18,8 +18,8 @@ Status LoadStudentList(StudentList& L) {
 	StudentList rear = L; // 初始化尾指针，指向头结点；后续采用尾插法建立学生表
 	StudentInfo temp;
 	while (fscanf(fp, 
-		"%s %s %s %s %s %s %d %s %s %d %s %d %s %s %s %d %s %s %s %s %d %s %s %s %s %d %s",
-		temp.name, temp.ID, temp.school_name, temp.class_name, temp.dorm_building, temp.room_number, 
+		"%s %s %s %s %s %s %s %d %s %s %d %s %d %s %s %s %d %s %s %s %s %d %s %s %s %s %d %s\n",
+		temp.name, temp.ID,temp.gender, temp.school_name, temp.class_name, temp.dorm_building, temp.room_number, 
 		&temp.bed_number, temp.contact_number, temp.guardian_number, &temp.in_dorm, temp.password, 
 		&temp.in_student_union, 
 		temp.on_leave.reason, temp.on_leave.start_date, temp.on_leave.end_date, 
@@ -76,8 +76,8 @@ Status SaveStudentList(StudentList& L) {
 	StudentList s = L->next; // 初始化指针，指向头结点下一个结点（第一个存有数据的结点）；后续利用s进行输出
 	while (s != NULL){
 		fprintf(fp,
-		"%s %s %s %s %s %s %d %s %s %d %s %d %s %s %s %d %s %s %s %s %d %s %s %s %s %d %s\n",
-		s->data.name, s->data.ID, s->data.school_name, s->data.class_name, s->data.dorm_building, s->data.room_number,
+		"%s %s %s %s %s %s %s %d %s %s %d %s %d %s %s %s %d %s %s %s %s %d %s %s %s %s %d %s\n",
+		s->data.name, s->data.ID, s->data.gender,s->data.school_name, s->data.class_name, s->data.dorm_building, s->data.room_number,
 		s->data.bed_number, s->data.contact_number, s->data.guardian_number, s->data.in_dorm, s->data.password,
 		s->data.in_student_union,
 		s->data.on_leave.reason, s->data.on_leave.start_date, s->data.on_leave.end_date,
