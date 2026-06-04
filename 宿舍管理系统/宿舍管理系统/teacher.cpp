@@ -17,12 +17,12 @@ Status LoadTeacherList(TeacherList& L) {
 		return ERROR;
 	TeacherList rear = L; // 初始化尾指针，指向头结点；后续采用尾插法建立导员表
 	TeacherInfo temp;
-	while (fscanf(fp, "%s %s %s %s %s %s %s %s %s %s %s %s %s %s %d %s",
+	while (fscanf(fp, "%s %s %s %s %s %s %s %s %s %s %s %s %s %s %d %s %d",
 		temp.name, temp.ID, temp.school_name, temp.password, temp.classes.class_in_charge[0], 
 		temp.classes.class_in_charge[1], temp.classes.class_in_charge[2], temp.classes.class_in_charge[3], 
 		temp.classes.class_in_charge[4], temp.classes.class_in_charge[5], temp.classes.class_in_charge[6], 
 		temp.classes.class_in_charge[7], temp.classes.class_in_charge[8], temp.classes.class_in_charge[9], 
-		&temp.classes.count, temp.contact_number) != EOF)
+		&temp.classes.count, temp.contact_number, &temp.is_leader) != EOF)
 		// 以上为while循环结束的条件，在判断同时会把一行数据写入temp，
 		// 如果这一行没有数据（即fp到了文件末尾），则循环结束
 	{
@@ -70,14 +70,14 @@ Status SaveTeacherList(TeacherList& L) {
 		return ERROR;
 	TeacherList s = L->next; // 初始化指针，指向头结点下一个结点（第一个存有数据的结点）；后续利用s进行输出
 	while (s != NULL) {
-		fprintf(fp, "%s %s %s %s %s %s %s %s %s %s %s %s %s %s %d %s\n",
+		fprintf(fp, "%s %s %s %s %s %s %s %s %s %s %s %s %s %s %d %s %d\n",
 			s->data.name, s->data.ID, s->data.school_name, s->data.password, 
 			s->data.classes.class_in_charge[0], s->data.classes.class_in_charge[1], 
 			s->data.classes.class_in_charge[2], s->data.classes.class_in_charge[3],
 			s->data.classes.class_in_charge[4], s->data.classes.class_in_charge[5], 
 			s->data.classes.class_in_charge[6], s->data.classes.class_in_charge[7], 
 			s->data.classes.class_in_charge[8], s->data.classes.class_in_charge[9],
-			s->data.classes.count, s->data.contact_number);
+			s->data.classes.count, s->data.contact_number, s->data.is_leader);
 		s = s->next; // s到下一个结点
 	}
 	fclose(fp);

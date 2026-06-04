@@ -15,11 +15,11 @@ Status LoadManagerList(ManagerList& L) {
 	FILE* fp = fopen("data/ManagerList.txt", "r");
 	if (!fp)
 		return ERROR;
-	ManagerList rear = L; // 初始化尾指针，指向头结点；后续采用尾插法建立学生表
+	ManagerList rear = L; // 初始化尾指针，指向头结点；后续采用尾插法建立宿管表
 	ManagerInfo temp;
-	while (fscanf(fp, "%s %s %s %s %d %s",
+	while (fscanf(fp, "%s %s %s %s %d %s %d",
 		temp.name, temp.ID, temp.password, temp.building_on_duty, 
-		&temp.duty_period, temp.contact_number) != EOF){
+		&temp.duty_period, temp.contact_number, &temp.is_leader) != EOF){
 		// 以下为循环体内的具体内容
 		ManagerList s = (ManagerNode*)malloc(sizeof(ManagerNode)); // 生成新尾结点
 		s->data = temp;
@@ -33,7 +33,7 @@ Status LoadManagerList(ManagerList& L) {
 }
 
 Status ManagerInsert(ManagerList& L, int i, ManagerInfo e) {
-	// 从头开始，找到第i个位置，进行学生信息结点的插入
+	// 从头开始，找到第i个位置，进行宿管信息结点的插入
 	int k = 0;
 	ManagerNode* p = L->next, * q = L, * s;
 	if (i < 1) // i非法（过小，i至少为1）
@@ -58,15 +58,15 @@ Status ManagerInsert(ManagerList& L, int i, ManagerInfo e) {
 }
 
 Status SaveManagerList(ManagerList& L) {
-	// 保存学生表
+	// 保存宿管表
 	FILE* fp = fopen("data/ManagerList.txt", "w");
 	if (!fp)
 		return ERROR;
 	ManagerList s = L->next; // 初始化指针，指向头结点下一个结点（第一个存有数据的结点）；后续利用s进行输出
 	while (s != NULL) {
-		fprintf(fp, "%s %s %s %s %d %s\n",
+		fprintf(fp, "%s %s %s %s %d %s %d\n",
 			s->data.name, s->data.ID, s->data.password, s->data.building_on_duty,
-			s->data.duty_period, s->data.contact_number);
+			s->data.duty_period, s->data.contact_number, s->data.is_leader);
 		s = s->next; // s到下一个结点
 	}
 	fclose(fp);

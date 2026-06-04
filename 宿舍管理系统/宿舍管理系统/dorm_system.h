@@ -87,6 +87,7 @@ typedef struct {
 	char building_on_duty[20]; // 值班宿舍楼
 	int duty_period; // 值班时间段，值为0--8:00~16；00,值为1--16:00~23:00,值为2--23:00~8：00
 	char contact_number[12]; // 联系电话
+	int is_leader; // 是否为宿管总管。0--普通宿管，1--宿管总管（可以管理宿管阿姨的入职、离职，即新增、删除宿管阿姨）
 } ManagerInfo;
 
 typedef struct ManagerNode {
@@ -110,6 +111,7 @@ typedef struct {
 	char password[50]; // 密码
 	duty classes; // 管理的班级
 	char contact_number[12]; // 联系电话
+	int is_leader; // 是否为辅导员总管。0--普通辅导员，1--辅导员总管（可以管理辅导员的入职、离职，即新增、删除辅导员）
 } TeacherInfo;
 
 typedef struct TeacherNode {
