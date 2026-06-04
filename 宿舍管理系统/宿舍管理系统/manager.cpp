@@ -79,7 +79,7 @@ Status FindManager(ManagerList L, char ID[13], char password[50], ManagerNode*& 
 	while (p) {
 		if (strcmp(p->data.ID, ID) == 0) {
 			// 若字符相等，则把当前结点的密码部分写入字符数组password
-			strcpy(password, L->data.password);
+			strcpy(password, p->data.password);
 			manager = p;
 			return OK;
 		}
