@@ -1,7 +1,0 @@
-<Solution>
-  <Configurations>
-    <Platform Name="x64" />
-    <Platform Name="x86" />
-  </Configurations>
-  <Project Path="宿舍管理系统/宿舍管理系统.vcxproj" Id="521d0213-f04a-4167-800d-d7f879359d04" />
-</Solution>
