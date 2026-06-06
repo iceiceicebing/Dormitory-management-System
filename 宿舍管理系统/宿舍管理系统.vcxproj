@@ -137,6 +137,7 @@
     <ClCompile Include="宿舍管理系统.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="announce.h" />
     <ClInclude Include="dorm_system.h" />
     <ClInclude Include="menu.h" />
   </ItemGroup>
