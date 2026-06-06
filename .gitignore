@@ -1,0 +1,24 @@
+# Visual Studio 本地缓存和配置
+.vs/
+*.user
+*.suo
+*.db
+*.db-shm
+*.db-wal
+*.vsidx
+*.opendb
+
+# 编译产生的输出文件夹
+x64/
+x86/
+Debug/
+Release/
+.vscode/
+
+# 编译产生的临时文件和程序
+*.obj
+*.exe
+*.pdb
+*.ilk
+*.vcxproj.user
+

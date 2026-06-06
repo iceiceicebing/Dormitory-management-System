@@ -1,22 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\0\\Desktop\\Dormitory-management-System\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\",
+  "WorkspaceRootPath": "C:\\Users\\0\\Desktop\\Dormitory-management-System-main\\Dormitory-management-System-main\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{521D0213-F04A-4167-800D-D7F879359D04}|\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF.vcxproj|C:\\Users\\0\\Desktop\\Dormitory-management-System\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\student_union.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{521D0213-F04A-4167-800D-D7F879359D04}|\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF.vcxproj|C:\\Users\\0\\Desktop\\Dormitory-management-System-main\\Dormitory-management-System-main\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\student_union.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{521D0213-F04A-4167-800D-D7F879359D04}|\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF.vcxproj|solutionrelative:\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\student_union.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{521D0213-F04A-4167-800D-D7F879359D04}|\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF.vcxproj|C:\\Users\\0\\Desktop\\Dormitory-management-System\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\dorm_system.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{521D0213-F04A-4167-800D-D7F879359D04}|\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF.vcxproj|C:\\Users\\0\\Desktop\\Dormitory-management-System-main\\Dormitory-management-System-main\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\teacher.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{521D0213-F04A-4167-800D-D7F879359D04}|\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF.vcxproj|solutionrelative:\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\teacher.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{521D0213-F04A-4167-800D-D7F879359D04}|\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF.vcxproj|C:\\Users\\0\\Desktop\\Dormitory-management-System-main\\Dormitory-management-System-main\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\dorm_system.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{521D0213-F04A-4167-800D-D7F879359D04}|\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF.vcxproj|solutionrelative:\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\dorm_system.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{521D0213-F04A-4167-800D-D7F879359D04}|\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF.vcxproj|C:\\Users\\0\\Desktop\\Dormitory-management-System\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\student.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{521D0213-F04A-4167-800D-D7F879359D04}|\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF.vcxproj|solutionrelative:\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\student.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{521D0213-F04A-4167-800D-D7F879359D04}|\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF.vcxproj|C:\\Users\\0\\Desktop\\Dormitory-management-System\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{521D0213-F04A-4167-800D-D7F879359D04}|\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF.vcxproj|solutionrelative:\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,56 +22,44 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "student_union.cpp",
-              "DocumentMoniker": "C:\\Users\\0\\Desktop\\Dormitory-management-System\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\student_union.cpp",
-              "RelativeDocumentMoniker": "\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\student_union.cpp",
-              "ToolTip": "C:\\Users\\0\\Desktop\\Dormitory-management-System\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\student_union.cpp",
-              "RelativeToolTip": "\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\student_union.cpp",
-              "ViewState": "AgIAAEkBAAAAAAAAAAAAAFcBAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-05-31T08:59:02.292Z",
-              "EditorCaption": ""
+              "DocumentIndex": 2,
+              "Title": "dorm_system.h",
+              "DocumentMoniker": "C:\\Users\\0\\Desktop\\Dormitory-management-System-main\\Dormitory-management-System-main\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\dorm_system.h",
+              "RelativeDocumentMoniker": "\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\dorm_system.h",
+              "ToolTip": "C:\\Users\\0\\Desktop\\Dormitory-management-System-main\\Dormitory-management-System-main\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\dorm_system.h",
+              "RelativeToolTip": "\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\dorm_system.h",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABYAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-06-06T07:10:28.187Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "dorm_system.h",
-              "DocumentMoniker": "C:\\Users\\0\\Desktop\\Dormitory-management-System\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\dorm_system.h",
-              "RelativeDocumentMoniker": "\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\dorm_system.h",
-              "ToolTip": "C:\\Users\\0\\Desktop\\Dormitory-management-System\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\dorm_system.h",
-              "RelativeToolTip": "\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\dorm_system.h",
-              "ViewState": "AgIAANgAAAAAAAAAAAAAAOwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-05-31T08:50:50.825Z"
+              "Title": "teacher.cpp",
+              "DocumentMoniker": "C:\\Users\\0\\Desktop\\Dormitory-management-System-main\\Dormitory-management-System-main\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\teacher.cpp",
+              "RelativeDocumentMoniker": "\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\teacher.cpp",
+              "ToolTip": "C:\\Users\\0\\Desktop\\Dormitory-management-System-main\\Dormitory-management-System-main\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\teacher.cpp",
+              "RelativeToolTip": "\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\teacher.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-06-06T07:06:56.824Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "student.cpp",
-              "DocumentMoniker": "C:\\Users\\0\\Desktop\\Dormitory-management-System\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\student.cpp",
-              "RelativeDocumentMoniker": "\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\student.cpp",
-              "ToolTip": "C:\\Users\\0\\Desktop\\Dormitory-management-System\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\student.cpp",
-              "RelativeToolTip": "\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\student.cpp",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAAEMAAAAmAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "student_union.cpp",
+              "DocumentMoniker": "C:\\Users\\0\\Desktop\\Dormitory-management-System-main\\Dormitory-management-System-main\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\student_union.cpp",
+              "RelativeDocumentMoniker": "\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\student_union.cpp",
+              "ToolTip": "C:\\Users\\0\\Desktop\\Dormitory-management-System-main\\Dormitory-management-System-main\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\student_union.cpp",
+              "RelativeToolTip": "\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\student_union.cpp",
+              "ViewState": "AgIAAGwAAAAAAAAAAAAAAIMAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-05-31T08:33:06.055Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF.cpp",
-              "DocumentMoniker": "C:\\Users\\0\\Desktop\\Dormitory-management-System\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF.cpp",
-              "RelativeDocumentMoniker": "\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF.cpp",
-              "ToolTip": "C:\\Users\\0\\Desktop\\Dormitory-management-System\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF.cpp",
-              "RelativeToolTip": "\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF.cpp",
-              "ViewState": "AgIAAI0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-05-31T08:30:55.423Z"
+              "WhenOpened": "2026-06-06T07:06:52.763Z",
+              "EditorCaption": ""
             }
           ]
         }
