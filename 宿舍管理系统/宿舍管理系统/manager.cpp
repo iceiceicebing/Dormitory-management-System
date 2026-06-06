@@ -134,7 +134,7 @@ void ManagerSystem(ManagerNode* manager) {
         printf("  4. 发布公告\n");
         printf("  5. 查看所有公告\n");
         printf("  6. 查看宿舍信息\n");
-        printf("  0. 推出并返回主菜单\n");
+        printf("  0. 退出并返回主菜单\n");
         printf("==================================\n");
         printf("请选择:");
         
