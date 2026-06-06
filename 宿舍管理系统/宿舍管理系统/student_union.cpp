@@ -1,9 +1,9 @@
-// student_union.cpp£ºÑ§Éú»áÈÎÎñ¶Ë²Ù×÷º¯ÊıµÄ¶¨Òå
+ï»¿// student_union.cppï¼šå­¦ç”Ÿä¼šä»»åŠ¡ç«¯æ“ä½œå‡½æ•°çš„å®šä¹‰
 
 #include "dorm_system.h"
 
 Status InitInspectionList(InspectionList& L) 
-{//½¨Á¢¼ì²éÕßĞÅÏ¢Á´±í
+{//å»ºç«‹æ£€æŸ¥è€…ä¿¡æ¯é“¾è¡¨
 	L = (InspectionList)malloc(sizeof(InspectionNode));
 	if (!L) return ERROR;
 	L->next = NULL;
@@ -11,7 +11,7 @@ Status InitInspectionList(InspectionList& L)
 }
 
 Status LoadInspectionList(InspectionList& L) 
-{// Ñ§Éú»áÈÎÎñ±í½á¹¹ÌåÃ»ÓĞ´æ´¢Ñ§Éú»áÈÎÎñ×ÜÊı¡£ÈçÓĞĞèÒª£¬¿ÉÒÔÔÚ¸Ãº¯ÊıµÄwhileÑ­»·ÌåÄÚÔö¼ÓÒ»¸ö¼ÆÊıµÄ±äÁ¿¡£
+{// å­¦ç”Ÿä¼šä»»åŠ¡è¡¨ç»“æ„ä½“æ²¡æœ‰å­˜å‚¨å­¦ç”Ÿä¼šä»»åŠ¡æ€»æ•°ã€‚å¦‚æœ‰éœ€è¦ï¼Œå¯ä»¥åœ¨è¯¥å‡½æ•°çš„whileå¾ªç¯ä½“å†…å¢åŠ ä¸€ä¸ªè®¡æ•°çš„å˜é‡ã€‚
 	if (!L) {
 		if (InitInspectionList(L) != OK)
 			return ERROR;
@@ -27,11 +27,11 @@ Status LoadInspectionList(InspectionList& L)
 
 	FILE* fp = fopen("data/InspectionList.txt", "r");
 	if (!fp)
-		return OK; // ÎÄ¼ş²»´æÔÚÊ±µ±×÷¿ÕÁĞ±í´¦Àí
+		return OK; // æ–‡ä»¶ä¸å­˜åœ¨æ—¶å½“ä½œç©ºåˆ—è¡¨å¤„ç†
 
-	InspectionList rear = L; // ³õÊ¼»¯Î²Ö¸Õë£¬Ö¸ÏòÍ·½áµã£»ºóĞø²ÉÓÃÎ²²å·¨½¨Á¢Ñ§Éú»áÈÎÎñ±í
+	InspectionList rear = L; // åˆå§‹åŒ–å°¾æŒ‡é’ˆï¼ŒæŒ‡å‘å¤´ç»“ç‚¹ï¼›åç»­é‡‡ç”¨å°¾æ’æ³•å»ºç«‹å­¦ç”Ÿä¼šä»»åŠ¡è¡¨
 	InspectionInfo temp;
-	int count = 0; // Í³¼Æ¼ÓÔØµÄ¼ì²éÈÎÎñÊıÁ¿
+	int count = 0; // ç»Ÿè®¡åŠ è½½çš„æ£€æŸ¥ä»»åŠ¡æ•°é‡
 	while (1) {
 		int ret = fscanf(fp, "%8s %19s %9s %49s %49s %49s %49s %49s %49s %49s %49s %49s %d %f %d",
 			temp.time, temp.dorm_building, temp.room_number,
@@ -48,7 +48,7 @@ Status LoadInspectionList(InspectionList& L)
 			return ERROR;
 		}
 
-		InspectionList s = (InspectionNode*)malloc(sizeof(InspectionNode)); // Éú³ÉĞÂÎ²½áµã
+		InspectionList s = (InspectionNode*)malloc(sizeof(InspectionNode)); // ç”Ÿæˆæ–°å°¾ç»“ç‚¹
 		if (!s) {
 			fclose(fp);
 			return ERROR;
@@ -56,18 +56,18 @@ Status LoadInspectionList(InspectionList& L)
 		s->data = temp;
 		s->next = NULL;
 
-		rear->next = s; // ²ÉÓÃ´øÍ·½áµãµÄÁ´±í½øĞĞÑ§Éú»áÈÎÎñĞÅÏ¢µÄ²åÈë£¬µÚÒ»¸ö½áµã£¨¼´LÖ¸ÏòµÄÍ·½áµã£©²»´æÊı¾İ
-		rear = s; // Î²Ö¸ÕëºóÒÆ
+		rear->next = s; // é‡‡ç”¨å¸¦å¤´ç»“ç‚¹çš„é“¾è¡¨è¿›è¡Œå­¦ç”Ÿä¼šä»»åŠ¡ä¿¡æ¯çš„æ’å…¥ï¼Œç¬¬ä¸€ä¸ªç»“ç‚¹ï¼ˆå³LæŒ‡å‘çš„å¤´ç»“ç‚¹ï¼‰ä¸å­˜æ•°æ®
+		rear = s; // å°¾æŒ‡é’ˆåç§»
 		count++;
 	}
 	fclose(fp);
-	printf("ÒÑ¼ÓÔØ %d Ìõ¼ì²éÈÎÎñ\n", count);
+	printf("å·²åŠ è½½ %d æ¡æ£€æŸ¥ä»»åŠ¡\n", count);
 	return OK;
 }
 
 Status InspectionInsert(InspectionList& L, int i, InspectionInfo e) 
-{// ´ÓÍ·¿ªÊ¼£¬ÕÒµ½µÚi¸öÎ»ÖÃ£¬½øĞĞÑ§Éú»áÈÎÎñĞÅÏ¢½áµãµÄ²åÈë
-	if (i < 1 || !L) // i·Ç·¨£¨¹ıĞ¡£¬iÖÁÉÙÎª1£©
+{// ä»å¤´å¼€å§‹ï¼Œæ‰¾åˆ°ç¬¬iä¸ªä½ç½®ï¼Œè¿›è¡Œå­¦ç”Ÿä¼šä»»åŠ¡ä¿¡æ¯ç»“ç‚¹çš„æ’å…¥
+	if (i < 1 || !L) // iéæ³•ï¼ˆè¿‡å°ï¼Œiè‡³å°‘ä¸º1ï¼‰
 		return ERROR;
 
 	InspectionNode* q = L;
@@ -80,7 +80,7 @@ Status InspectionInsert(InspectionList& L, int i, InspectionInfo e)
 	if (!q)
 		return ERROR;
 
-	InspectionNode* s = (InspectionNode*)malloc(sizeof(InspectionNode)); // Éú³É´ı²åÈë½áµã
+	InspectionNode* s = (InspectionNode*)malloc(sizeof(InspectionNode)); // ç”Ÿæˆå¾…æ’å…¥ç»“ç‚¹
 	if (!s)
 		return ERROR;
 	s->data = e;
@@ -90,13 +90,13 @@ Status InspectionInsert(InspectionList& L, int i, InspectionInfo e)
 }
 
 Status SaveInspectionList(InspectionList& L)
- {// ±£´æÑ§Éú»áÈÎÎñ±í
+ {// ä¿å­˜å­¦ç”Ÿä¼šä»»åŠ¡è¡¨
 	if (!L)
 		return ERROR;
 	FILE* fp = fopen("data/InspectionList.txt", "w");
 	if (!fp)
 		return ERROR;
-	InspectionList s = L->next; // ³õÊ¼»¯Ö¸Õë£¬Ö¸ÏòÍ·½áµãÏÂÒ»¸ö½áµã£¨µÚÒ»¸ö´æÓĞÊı¾İµÄ½áµã£©£»ºóĞøÀûÓÃs½øĞĞÊä³ö
+	InspectionList s = L->next; // åˆå§‹åŒ–æŒ‡é’ˆï¼ŒæŒ‡å‘å¤´ç»“ç‚¹ä¸‹ä¸€ä¸ªç»“ç‚¹ï¼ˆç¬¬ä¸€ä¸ªå­˜æœ‰æ•°æ®çš„ç»“ç‚¹ï¼‰ï¼›åç»­åˆ©ç”¨sè¿›è¡Œè¾“å‡º
 	while (s != NULL) {
 		fprintf(fp, "%s %s %s %s %s %s %s %s %s %s %s %s %s %d %f %d\n",
 			s->data.time, s->data.dorm_building, s->data.room_number, s->data.all_inspectors.inspectors[0],
@@ -106,14 +106,14 @@ Status SaveInspectionList(InspectionList& L)
 			s->data.all_inspectors.inspectors[7], s->data.all_inspectors.inspectors[8],
 			s->data.all_inspectors.inspectors[9], s->data.all_inspectors.count,
 			s->data.score, s->data.is_finished);
-		s = s->next; // sµ½ÏÂÒ»¸ö½áµã
+		s = s->next; // såˆ°ä¸‹ä¸€ä¸ªç»“ç‚¹
 	}
 	fclose(fp);
 	return OK;
 }
 
 int CompareInspectionScore(const void* a, const void* b)
- {// ±È½Ïº¯Êı
+ {// æ¯”è¾ƒå‡½æ•°
 	InspectionNode* const* p1 = (InspectionNode* const*)a;
 	InspectionNode* const* p2 = (InspectionNode* const*)b;
 	if ((*p2)->data.score > (*p1)->data.score)
@@ -124,9 +124,9 @@ int CompareInspectionScore(const void* a, const void* b)
 }
 
 static void ShowInspectionRanking(InspectionList L)
- {// °´ÕÕ·ÖÊı´Ó¸ßµ½µÍÕ¹Ê¾¼ì²éÈÎÎñÅÅÃû£¬·ÖÊıÏàÍ¬Ôò°´ÕÕÈÕÆÚÏÈºóÅÅĞò
+ {// æŒ‰ç…§åˆ†æ•°ä»é«˜åˆ°ä½å±•ç¤ºæ£€æŸ¥ä»»åŠ¡æ’åï¼Œåˆ†æ•°ç›¸åŒåˆ™æŒ‰ç…§æ—¥æœŸå…ˆåæ’åº
 	if (!L || !L->next) {
-		printf("ÔİÎŞ¼ì²éÈÎÎñ\n");
+		printf("æš‚æ— æ£€æŸ¥ä»»åŠ¡\n");
 		return;
 	}
 	int count = 0;
@@ -140,27 +140,27 @@ static void ShowInspectionRanking(InspectionList L)
 		p = p->next;
 	}
 	qsort(arr, count, sizeof(InspectionNode*), CompareInspectionScore);
-	printf("ÆÀ·ÖÅÅÃû£º\n");
+	printf("è¯„åˆ†æ’åï¼š\n");
 	for (int i = 0; i < count; i++)
 	{
-		printf("%d. ÈÕÆÚ£º%s | Â¥¶°£º%s | ·¿¼ä£º%s | ·ÖÊı£º%.1f | ×´Ì¬£º%s\n",i + 1,arr[i]->data.time,arr[i]->data.dorm_building,arr[i]->data.room_number,arr[i]->data.score);
+		printf("%d. æ—¥æœŸï¼š%s | æ¥¼æ ‹ï¼š%s | æˆ¿é—´ï¼š%s | åˆ†æ•°ï¼š%.1f | çŠ¶æ€ï¼š%s\n",i + 1,arr[i]->data.time,arr[i]->data.dorm_building,arr[i]->data.room_number,arr[i]->data.score);
 		if (arr[i]->data.is_finished)
-			printf("| ×´Ì¬: ÒÑ´ò·Ö\n");
+			printf("| çŠ¶æ€: å·²æ‰“åˆ†\n");
 		else
-			printf("| ×´Ì¬: Î´´ò·Ö\n");
+			printf("| çŠ¶æ€: æœªæ‰“åˆ†\n");
 	}
 	free(arr);
 }
 
 static int DateInRange(const char* date, const char* start, const char* end) 
-{//ÅĞ¶ÏÈÕÆÚÊÇ·ñºÏ·¨
+{//åˆ¤æ–­æ—¥æœŸæ˜¯å¦åˆæ³•
 	if (!date || !start || !end || start[0] == '\0' || end[0] == '\0')
 		return 0;
 	return strcmp(date, start) >= 0 && strcmp(date, end) <= 0;
 }
 
 static int IsStudentInDormOnDate(StudentInfo* s, const char* date) 
-{// ÅĞ¶ÏÑ§ÉúÔÚÄ³ÈÕÆÚÊÇ·ñÔÚÇŞ
+{// åˆ¤æ–­å­¦ç”Ÿåœ¨æŸæ—¥æœŸæ˜¯å¦åœ¨å¯
 	if (!s || !date) return 0;
 	if (s->on_leave.approved == 1 && DateInRange(date, s->on_leave.start_date, s->on_leave.end_date))
 		return 0;
@@ -197,7 +197,7 @@ static void CollectDormCountByBuilding(StudentList L, char buildings[100][20], i
 static void ShowDormCountByBuilding(StudentList L)
  {
 	if (!L || !L->next) {
-		printf("ÔİÎŞÑ§ÉúÊı¾İ£¬ÎŞ·¨Í³¼ÆËŞÉáÈËÊı\n");
+		printf("æš‚æ— å­¦ç”Ÿæ•°æ®ï¼Œæ— æ³•ç»Ÿè®¡å®¿èˆäººæ•°\n");
 		return;
 	}
 	char buildings[100][20];
@@ -205,32 +205,32 @@ static void ShowDormCountByBuilding(StudentList L)
 	int building_count = 0;
 	CollectDormCountByBuilding(L, buildings, counts, &building_count);
 	if (building_count == 0) {
-		printf("µ±Ç°ÎŞÑ§ÉúÔÚÇŞ¡£\n");
+		printf("å½“å‰æ— å­¦ç”Ÿåœ¨å¯ã€‚\n");
 		return;
 	}
-	printf("°´Â¥¶°Í³¼Æµ±Ç°ÔÚÇŞËŞÉáÈËÊı£º\n");
+	printf("æŒ‰æ¥¼æ ‹ç»Ÿè®¡å½“å‰åœ¨å¯å®¿èˆäººæ•°ï¼š\n");
 	for (int i = 0; i < building_count; i++) {
-		printf("Â¥¶°£º%s | ÔÚÇŞÈËÊı£º%d\n", buildings[i], counts[i]);
+		printf("æ¥¼æ ‹ï¼š%s | åœ¨å¯äººæ•°ï¼š%d\n", buildings[i], counts[i]);
 	}
 }
 
 void ShowDormCountByDate(StudentList L) 
-{// °´ÈÕÆÚÍ³¼ÆÔÚÇŞÈËÊı
+{// æŒ‰æ—¥æœŸç»Ÿè®¡åœ¨å¯äººæ•°
 	if (!L || !L->next) 
 	{
-		printf("ÔİÎŞÑ§ÉúÊı¾İ£¬ÎŞ·¨Í³¼ÆËŞÉáÈËÊı\n");
+		printf("æš‚æ— å­¦ç”Ÿæ•°æ®ï¼Œæ— æ³•ç»Ÿè®¡å®¿èˆäººæ•°\n");
 		return;
 	}
-	printf("ÇëÊäÈëÒªÍ³¼ÆµÄÈÕÆÚ£¨¸ñÊ½£ºYYYYMMDD£©£º");
+	printf("è¯·è¾“å…¥è¦ç»Ÿè®¡çš„æ—¥æœŸï¼ˆæ ¼å¼ï¼šYYYYMMDDï¼‰ï¼š");
 	char date[9];
 	scanf(" %8s", date);
 	if (strlen(date) != 8) 
 	{
-		printf("ÈÕÆÚ¸ñÊ½´íÎó£¬ÇëÊäÈëYYYYMMDD¡£\n");
+		printf("æ—¥æœŸæ ¼å¼é”™è¯¯ï¼Œè¯·è¾“å…¥YYYYMMDDã€‚\n");
 		return;
 	}
-	char buildings[100][20];// °´ÕÕË÷Òı´æ´¢Â¥¶°Ãû³Æ
-	int counts[100] = {0};// ´æ´¢Ã¿¶°Â¥ÈËÊı
+	char buildings[100][20];// æŒ‰ç…§ç´¢å¼•å­˜å‚¨æ¥¼æ ‹åç§°
+	int counts[100] = {0};// å­˜å‚¨æ¯æ ‹æ¥¼äººæ•°
 	int building_count = 0;
 	StudentNode* p = L->next;
 	while (p) {
@@ -245,7 +245,7 @@ void ShowDormCountByDate(StudentList L)
 					break;
 				}
 			}
-			if (idx == -1) // Ñ§ÉúËùÔÚÂ¥¶°Î´Í³¼Æ¹ı£¬Ìí¼ÓĞÂÂ¥¶°
+			if (idx == -1) // å­¦ç”Ÿæ‰€åœ¨æ¥¼æ ‹æœªç»Ÿè®¡è¿‡ï¼Œæ·»åŠ æ–°æ¥¼æ ‹
 			{
 				idx = building_count++;
 				strcpy(buildings[idx], p->data.dorm_building);
@@ -254,22 +254,22 @@ void ShowDormCountByDate(StudentList L)
 		}
 		p = p->next;
 	}
-	printf("%s °´Â¥¶°ÔÚÇŞÈËÊıÍ³¼Æ£º\n", date);
+	printf("%s æŒ‰æ¥¼æ ‹åœ¨å¯äººæ•°ç»Ÿè®¡ï¼š\n", date);
 	if (building_count == 0) {
-		printf("¸ÃÈÕÆÚÎŞÔÚÇŞÑ§Éú¡£\n");
+		printf("è¯¥æ—¥æœŸæ— åœ¨å¯å­¦ç”Ÿã€‚\n");
 		return;
 	}
 	for (int i = 0; i < building_count; i++)
 	 {
-		printf("Â¥¶°£º%s | ÔÚÇŞÈËÊı£º%d\n", buildings[i], counts[i]);
+		printf("æ¥¼æ ‹ï¼š%s | åœ¨å¯äººæ•°ï¼š%d\n", buildings[i], counts[i]);
 	}
 }
 
 static Status ExportStatisticsReport(InspectionList inspections, StudentList students, const char* filename)
- {// µ¼³öÍ³¼Æ±¨±íµ½ÎÄ±¾ÎÄ¼ş
+ {// å¯¼å‡ºç»Ÿè®¡æŠ¥è¡¨åˆ°æ–‡æœ¬æ–‡ä»¶
 	FILE* fp = fopen(filename, "w");
 	if (!fp) return ERROR;
-	fprintf(fp, "Ñ§Éú»á¼ì²éÓëËŞÉáÍ³¼Æ±¨±í\n");
+	fprintf(fp, "å­¦ç”Ÿä¼šæ£€æŸ¥ä¸å®¿èˆç»Ÿè®¡æŠ¥è¡¨\n");
 	fprintf(fp, "==============================\n");
 	int total = 0, finished = 0, unfinished = 0;
 	InspectionNode* p = inspections ? inspections->next : NULL;
@@ -280,30 +280,30 @@ static Status ExportStatisticsReport(InspectionList inspections, StudentList stu
 		else unfinished++;
 		p = p->next;
 	}
-	fprintf(fp, "¼ì²éÈÎÎñ×ÜÊı£º%d\n", total);
-	fprintf(fp, "ÒÑÍê³É£º%d\n", finished);
-	fprintf(fp, "Î´Íê³É£º%d\n", unfinished);
-	fprintf(fp, "\n¼ì²éÈÎÎñÁĞ±í£º\n");
+	fprintf(fp, "æ£€æŸ¥ä»»åŠ¡æ€»æ•°ï¼š%d\n", total);
+	fprintf(fp, "å·²å®Œæˆï¼š%d\n", finished);
+	fprintf(fp, "æœªå®Œæˆï¼š%d\n", unfinished);
+	fprintf(fp, "\næ£€æŸ¥ä»»åŠ¡åˆ—è¡¨ï¼š\n");
 	p = inspections ? inspections->next : NULL;
 	while (p) 
 	{
-		fprintf(fp, "ÈÕÆÚ£º%s | Â¥¶°£º%s | ·¿¼ä£º%s | ·ÖÊı£º%.1f", p->data.time, p->data.dorm_building, p->data.room_number, p->data.score);
+		fprintf(fp, "æ—¥æœŸï¼š%s | æ¥¼æ ‹ï¼š%s | æˆ¿é—´ï¼š%s | åˆ†æ•°ï¼š%.1f", p->data.time, p->data.dorm_building, p->data.room_number, p->data.score);
 	if (p->data.is_finished)
-		fprintf(fp, "| ×´Ì¬£ºÒÑ´ò·Ö\n ");
+		fprintf(fp, "| çŠ¶æ€ï¼šå·²æ‰“åˆ†\n ");
 	else
-		fprintf(fp, "| ×´Ì¬£ºÎ´´ò·Ö\n");
+		fprintf(fp, "| çŠ¶æ€ï¼šæœªæ‰“åˆ†\n");
 		p = p->next;
 	}
-	fprintf(fp, "\nµ±Ç°ÔÚÇŞÑ§Éú°´Â¥¶°Í³¼Æ£º\n");
+	fprintf(fp, "\nå½“å‰åœ¨å¯å­¦ç”ŸæŒ‰æ¥¼æ ‹ç»Ÿè®¡ï¼š\n");
 	char buildings[100][20];
 	int counts[100] = {0};
 	int building_count = 0;
 	CollectDormCountByBuilding(students, buildings, counts, &building_count);
 	if (building_count == 0) {
-		fprintf(fp, "µ±Ç°ÎŞÑ§ÉúÔÚÇŞ¡£\n");
+		fprintf(fp, "å½“å‰æ— å­¦ç”Ÿåœ¨å¯ã€‚\n");
 	} else {
 		for (int i = 0; i < building_count; i++) {
-			fprintf(fp, "Â¥¶°£º%s | ÔÚÇŞÈËÊı£º%d\n", buildings[i], counts[i]);
+			fprintf(fp, "æ¥¼æ ‹ï¼š%s | åœ¨å¯äººæ•°ï¼š%d\n", buildings[i], counts[i]);
 		}
 	}
 	fclose(fp);
@@ -311,24 +311,24 @@ static Status ExportStatisticsReport(InspectionList inspections, StudentList stu
 }
 
 Status FindUnionMember(StudentList L, char ID[13], char password[50], StudentNode*& union_member) {
-	// ÔªËØ²éÕÒ£¬ÕÒµ½Æ¥ÅäµÄIDÔò·µ»ØÃÜÂë
+	// å…ƒç´ æŸ¥æ‰¾ï¼Œæ‰¾åˆ°åŒ¹é…çš„IDåˆ™è¿”å›å¯†ç 
 	StudentNode* p = L->next;
 	while (p) {
 		if (strcmp(p->data.ID, ID) == 0 && p->data.in_student_union != 0) {
-			// ÈôIDÆ¥Åä£¬ÇÒ¸ÃÑ§ÉúÊÇÑ§Éú»á³ÉÔ±£¨¸ÉÊÂ»ò»á³¤£©£¬Ôò°Ñµ±Ç°½áµãµÄÃÜÂë²¿·ÖĞ´Èë×Ö·ûÊı×épassword
+			// è‹¥IDåŒ¹é…ï¼Œä¸”è¯¥å­¦ç”Ÿæ˜¯å­¦ç”Ÿä¼šæˆå‘˜ï¼ˆå¹²äº‹æˆ–ä¼šé•¿ï¼‰ï¼Œåˆ™æŠŠå½“å‰ç»“ç‚¹çš„å¯†ç éƒ¨åˆ†å†™å…¥å­—ç¬¦æ•°ç»„password
 			strcpy(password, p->data.password);
 			union_member = p;
 			return OK;
 		}
 		else if (strcmp(p->data.ID, ID) == 0 && p->data.in_student_union == 0) 
-			return FALSE; // ²éÕÒµ½ÁËÑ§Éú£¬µ«²»ÊÇÑ§Éú»á³ÉÔ±
+			return FALSE; // æŸ¥æ‰¾åˆ°äº†å­¦ç”Ÿï¼Œä½†ä¸æ˜¯å­¦ç”Ÿä¼šæˆå‘˜
 		p = p->next;
 	}
-	return ERROR; // Ñ§Éú²»´æÔÚ
+	return ERROR; // å­¦ç”Ÿä¸å­˜åœ¨
 }
 
 Status CreateInspection(InspectionList& L, InspectionInfo e) 
-{// ÔÚÑ§Éú»áÈÎÎñ±íÄ©Î²²åÈëĞÂµÄÑ§Éú»áÈÎÎñ
+{// åœ¨å­¦ç”Ÿä¼šä»»åŠ¡è¡¨æœ«å°¾æ’å…¥æ–°çš„å­¦ç”Ÿä¼šä»»åŠ¡
 	InspectionList p = L;
 	while (p->next) p = p->next;
 
@@ -340,7 +340,7 @@ Status CreateInspection(InspectionList& L, InspectionInfo e)
 }
 
 Status FindInspection(InspectionList L, char building[], char room[], InspectionNode*& task) 
-{// ¸ù¾İÂ¥¶°¡¢·¿¼äºÅ²éÕÒ¼ì²éÈÎÎñ
+{// æ ¹æ®æ¥¼æ ‹ã€æˆ¿é—´å·æŸ¥æ‰¾æ£€æŸ¥ä»»åŠ¡
 	InspectionNode* p = L->next;
 	while (p) {
 		if (strcmp(p->data.dorm_building, building) == 0 &&
@@ -355,7 +355,7 @@ Status FindInspection(InspectionList L, char building[], char room[], Inspection
 }
 
 Status ModifyInspectionScore(InspectionList& L, char building[], char room[], float new_score) 
-{// ĞŞ¸ÄÆÀ·Ö£¨´ò·Ö£©
+{// ä¿®æ”¹è¯„åˆ†ï¼ˆæ‰“åˆ†ï¼‰
 	InspectionNode* p = NULL;
 	if (FindInspection(L, building, room, p) != OK)
 		return ERROR;
@@ -366,7 +366,7 @@ Status ModifyInspectionScore(InspectionList& L, char building[], char room[], fl
 }
 
 Status DeleteInspection(InspectionList& L, char building[], char room[])
- {// É¾³ıÒ»Ìõ¼ì²éÈÎÎñ
+ {// åˆ é™¤ä¸€æ¡æ£€æŸ¥ä»»åŠ¡
 	InspectionNode *p = L->next, *q = L;
 	while (p) {
 		if (strcmp(p->data.dorm_building, building) == 0 &&
@@ -383,31 +383,31 @@ Status DeleteInspection(InspectionList& L, char building[], char room[])
 }
 
 void ShowAllInspections(InspectionList L)
- {// Õ¹Ê¾ËùÓĞ¼ì²éÈÎÎñ
+ {// å±•ç¤ºæ‰€æœ‰æ£€æŸ¥ä»»åŠ¡
 	InspectionNode* p = NULL;
 	if (L)
 		p = L->next;
 	if (!p) 
 	{
-		printf("ÔİÎŞ¼ì²éÈÎÎñ\n");
+		printf("æš‚æ— æ£€æŸ¥ä»»åŠ¡\n");
 		return;
 	}
 	while (p)
 	 {
-		printf("ÈÕÆÚ£º%s | Â¥¶°£º%s | ·¿¼ä£º%s | ·ÖÊı£º%.1f ", p->data.time, p->data.dorm_building, p->data.room_number, p->data.score);
+		printf("æ—¥æœŸï¼š%s | æ¥¼æ ‹ï¼š%s | æˆ¿é—´ï¼š%s | åˆ†æ•°ï¼š%.1f ", p->data.time, p->data.dorm_building, p->data.room_number, p->data.score);
 		if (p->data.is_finished)
-			printf("| ×´Ì¬: ÒÑ´ò·Ö\n");
+			printf("| çŠ¶æ€: å·²æ‰“åˆ†\n");
 		else
-			printf("| ×´Ì¬: Î´´ò·Ö\n");
+			printf("| çŠ¶æ€: æœªæ‰“åˆ†\n");
 		p = p->next;
 	}
 }
 
-// °´Ìõ¼şËÑË÷¼ì²éÈÎÎñ£¨date/building/room ¿É´«¿Õ×Ö·û´®±íÊ¾²»É¸Ñ¡¸ÃÏî£©
+// æŒ‰æ¡ä»¶æœç´¢æ£€æŸ¥ä»»åŠ¡ï¼ˆdate/building/room å¯ä¼ ç©ºå­—ç¬¦ä¸²è¡¨ç¤ºä¸ç­›é€‰è¯¥é¡¹ï¼‰
 static Status SearchInspections(InspectionList L, const char* date, const char* building, const char* room)
 {
 	if (!L || !L->next) {
-		printf("ÔİÎŞ¼ì²éÈÎÎñ\n");
+		printf("æš‚æ— æ£€æŸ¥ä»»åŠ¡\n");
 		return ERROR;
 	}
 	InspectionNode* p = L->next;
@@ -418,35 +418,35 @@ static Status SearchInspections(InspectionList L, const char* date, const char* 
 		int match_room = (room == NULL || room[0] == '\0' || strcmp(p->data.room_number, room) == 0);
 
 		if (match_date && match_building && match_room) {
-			printf("ÈÕÆÚ£º%s | Â¥¶°£º%s | ·¿¼ä£º%s | ·ÖÊı£º%.1f | ¼ì²éÕß£º",
+			printf("æ—¥æœŸï¼š%s | æ¥¼æ ‹ï¼š%s | æˆ¿é—´ï¼š%s | åˆ†æ•°ï¼š%.1f | æ£€æŸ¥è€…ï¼š",
 				p->data.time, p->data.dorm_building, p->data.room_number, p->data.score);
 			for (int i = 0; i < p->data.all_inspectors.count; i++) {
 				if (i) printf(", ");
 				printf("%s", p->data.all_inspectors.inspectors[i]);
 			}
 		if(p->data.is_finished)
-			printf(" | ×´Ì¬£ºÒÑ´ò·Ö\n");
+			printf(" | çŠ¶æ€ï¼šå·²æ‰“åˆ†\n");
 		else
-			printf(" | ×´Ì¬£ºÎ´´ò·Ö\n");
+			printf(" | çŠ¶æ€ï¼šæœªæ‰“åˆ†\n");
 			found++;
 		}
 		p = p->next;
 	}
 	if (found == 0) {
-		printf("Î´ÕÒµ½Æ¥ÅäµÄ¼ì²éÈÎÎñ¡£\n");
+		printf("æœªæ‰¾åˆ°åŒ¹é…çš„æ£€æŸ¥ä»»åŠ¡ã€‚\n");
 		return ERROR;
 	}
 	return OK;
 }
 
-// Í³¼Æ²¢ÏÔÊ¾Ã¿Î»¼ì²éÕß²ÎÓë´ÎÊı£¨½µĞò£©
+// ç»Ÿè®¡å¹¶æ˜¾ç¤ºæ¯ä½æ£€æŸ¥è€…å‚ä¸æ¬¡æ•°ï¼ˆé™åºï¼‰
 static Status ShowInspectorCounts(InspectionList L)
 {
 	if (!L || !L->next) {
-		printf("ÔİÎŞ¼ì²éÈÎÎñ£¬ÎŞ·¨Í³¼Æ¼ì²éÕß\n");
+		printf("æš‚æ— æ£€æŸ¥ä»»åŠ¡ï¼Œæ— æ³•ç»Ÿè®¡æ£€æŸ¥è€…\n");
 		return ERROR;
 	}
-	// ¼òµ¥ÉÏÏŞ£¬°´ÏÖ×´×î¶à²»»á³¬¹ı200Ãû²»Í¬¼ì²éÕß
+	// ç®€å•ä¸Šé™ï¼ŒæŒ‰ç°çŠ¶æœ€å¤šä¸ä¼šè¶…è¿‡200åä¸åŒæ£€æŸ¥è€…
 	char names[200][50];
 	int counts[200] = { 0 };
 	int n = 0;
@@ -476,10 +476,10 @@ static Status ShowInspectorCounts(InspectionList L)
 		p = p->next;
 	}
 	if (n == 0) {
-		printf("ÔİÎŞ¼ì²éÕßÊı¾İ\n");
+		printf("æš‚æ— æ£€æŸ¥è€…æ•°æ®\n");
 		return ERROR;
 	}
-	// ¼òµ¥ÅÅĞò£¨Ñ¡Ôñ»òÃ°Åİ¶¼¿É£¬±£³Ö´úÂë·ç¸ñ£©
+	// ç®€å•æ’åºï¼ˆé€‰æ‹©æˆ–å†’æ³¡éƒ½å¯ï¼Œä¿æŒä»£ç é£æ ¼ï¼‰
 	for (int i = 0; i < n - 1; i++) {
 		for (int j = i + 1; j < n; j++) {
 			if (counts[j] > counts[i]) {
@@ -488,20 +488,20 @@ static Status ShowInspectorCounts(InspectionList L)
 			}
 		}
 	}
-	printf("¼ì²éÕß¹±Ï×´ÎÊıÍ³¼Æ£º\n");
+	printf("æ£€æŸ¥è€…è´¡çŒ®æ¬¡æ•°ç»Ÿè®¡ï¼š\n");
 	for (int i = 0; i < n; i++) {
-		printf("%d. %s | ´ÎÊı£º%d\n", i + 1, names[i], counts[i]);
+		printf("%d. %s | æ¬¡æ•°ï¼š%d\n", i + 1, names[i], counts[i]);
 	}
 	return OK;
 }
 
-// °´ÈÕÆÚ·¶Î§µ¼³ö¼ì²éÈÎÎñµ½ÎÄ±¾ÎÄ¼ş£¨°üº¬¼ì²éÕßÁĞ±í£©£¬ÈÕÆÚ¸ñÊ½ÒªÇó YYYYMMDD£¬×Ö·û´®±È½Ï¿ÉÖ±½ÓÓÃ strcmp
+// æŒ‰æ—¥æœŸèŒƒå›´å¯¼å‡ºæ£€æŸ¥ä»»åŠ¡åˆ°æ–‡æœ¬æ–‡ä»¶ï¼ˆåŒ…å«æ£€æŸ¥è€…åˆ—è¡¨ï¼‰ï¼Œæ—¥æœŸæ ¼å¼è¦æ±‚ YYYYMMDDï¼Œå­—ç¬¦ä¸²æ¯”è¾ƒå¯ç›´æ¥ç”¨ strcmp
 static Status ExportInspectionsByDate(InspectionList L, const char* startDate, const char* endDate, const char* outPath)
 {
 	if (!L) return ERROR;
 	FILE* fp = fopen(outPath, "w");
 	if (!fp) return ERROR;
-	fprintf(fp, "ÈÕÆÚ,Â¥¶°,·¿¼ä,·ÖÊı,×´Ì¬,¼ì²éÕß\n");
+	fprintf(fp, "æ—¥æœŸ,æ¥¼æ ‹,æˆ¿é—´,åˆ†æ•°,çŠ¶æ€,æ£€æŸ¥è€…\n");
 	InspectionNode* p = L->next;
 	while (p) {
 		int in_range = 1;
@@ -510,9 +510,9 @@ static Status ExportInspectionsByDate(InspectionList L, const char* startDate, c
 		if (in_range) {
 			fprintf(fp, "%s,%s,%s,%.1f,%s,\"", p->data.time, p->data.dorm_building, p->data.room_number, p->data.score);
 			if (p->data.is_finished)
-				fprintf(fp, " | ×´Ì¬£ºÒÑ´ò·Ö\n");
+				fprintf(fp, " | çŠ¶æ€ï¼šå·²æ‰“åˆ†\n");
 			else
-				fprintf(fp," | ×´Ì¬£ºÎ´´ò·Ö\n");
+				fprintf(fp," | çŠ¶æ€ï¼šæœªæ‰“åˆ†\n");
 			for (int i = 0; i < p->data.all_inspectors.count; i++) {
 				if (i) fprintf(fp, ";");
 				fprintf(fp, "%s", p->data.all_inspectors.inspectors[i]);
@@ -525,7 +525,7 @@ static Status ExportInspectionsByDate(InspectionList L, const char* startDate, c
 	return OK;
 }
 
-void StudentUnionSystem(StudentNode* union_member) // Ñ§Éú»áÖ÷½çÃæ
+void StudentUnionSystem(StudentNode* union_member) // å­¦ç”Ÿä¼šä¸»ç•Œé¢
 {
 	int choice;
 	float score;
@@ -533,30 +533,30 @@ void StudentUnionSystem(StudentNode* union_member) // Ñ§Éú»áÖ÷½çÃæ
 	InspectionInfo task;
 	InspectionList L = NULL;
 
-	InitInspectionList(L); // ³õÊ¼»¯Ñ§Éú»áÈÎÎñ±í
+	InitInspectionList(L); // åˆå§‹åŒ–å­¦ç”Ÿä¼šä»»åŠ¡è¡¨
 	LoadInspectionList(L);
 
 	while (1) {
-		printf("\n=====Ñ§Éú»áÆÀ·Ö====\n");
-		printf("µ±Ç°µÇÂ¼£º%s\n", union_member->data.name);
-		printf("1.²é¿´ËùÓĞ¼ì²éÈÎÎñ\n");
-		printf("2.ĞÂÔö¼ì²éÈÎÎñ\n");
-		printf("3.¸øËŞÉá´ò·Ö\n");
-		printf("4.É¾³ı¼ì²é¡¤1ÈÎÎñ\n");
-		printf("5.±£´æ²¢ÍË³öÑ§Éú»áÆÀ·Ö\n");
-		printf("6.²é¿´ÆÀ·ÖÅÅÃû\n");
-		printf("7.°´ÕÕÂ¥¶°²é¿´µ±Ç°ÔÚÇŞÈËÊı\n");
-		printf("8.°´ÕÕÈÕÆÚ²é¿´µ±Ç°ÔÚÇŞÈËÊı\n");
-		printf("9.µ¼³öÍ³¼Æ±¨±í\n");
-		printf("10.ËÑË÷¼ì²éÈÎÎñ\n");
-		printf("11.¼ì²éÕß¹±Ï×Í³¼Æ\n");
-		printf("12.°´ÕÕÈÕÆÚÇø¼äµ¼³ö¼ì²éÈÎÎñ\n");
-		printf("ÇëÑ¡Ôñ:");
+		printf("\n=====å­¦ç”Ÿä¼šè¯„åˆ†====\n");
+		printf("å½“å‰ç™»å½•ï¼š%s\n", union_member->data.name);
+		printf("1.æŸ¥çœ‹æ‰€æœ‰æ£€æŸ¥ä»»åŠ¡\n");
+		printf("2.æ–°å¢æ£€æŸ¥ä»»åŠ¡\n");
+		printf("3.ç»™å®¿èˆæ‰“åˆ†\n");
+		printf("4.åˆ é™¤æ£€æŸ¥Â·1ä»»åŠ¡\n");
+		printf("5.ä¿å­˜å¹¶é€€å‡ºå­¦ç”Ÿä¼šè¯„åˆ†\n");
+		printf("6.æŸ¥çœ‹è¯„åˆ†æ’å\n");
+		printf("7.æŒ‰ç…§æ¥¼æ ‹æŸ¥çœ‹å½“å‰åœ¨å¯äººæ•°\n");
+		printf("8.æŒ‰ç…§æ—¥æœŸæŸ¥çœ‹å½“å‰åœ¨å¯äººæ•°\n");
+		printf("9.å¯¼å‡ºç»Ÿè®¡æŠ¥è¡¨\n");
+		printf("10.æœç´¢æ£€æŸ¥ä»»åŠ¡\n");
+		printf("11.æ£€æŸ¥è€…è´¡çŒ®ç»Ÿè®¡\n");
+		printf("12.æŒ‰ç…§æ—¥æœŸåŒºé—´å¯¼å‡ºæ£€æŸ¥ä»»åŠ¡\n");
+		printf("è¯·é€‰æ‹©:");
 		if (scanf("%d", &choice) != 1)
 		{
 			int ch;
 			while ((ch = getchar()) != '\n' && ch != EOF);
-			printf("ÊäÈëÎŞĞ§£¬ÇëÊäÈëÊı×Ö¡£\n");
+			printf("è¾“å…¥æ— æ•ˆï¼Œè¯·è¾“å…¥æ•°å­—ã€‚\n");
 			continue;
 		}
 
@@ -566,13 +566,13 @@ void StudentUnionSystem(StudentNode* union_member) // Ñ§Éú»áÖ÷½çÃæ
 			ShowAllInspections(L);
 			break;
 		case 2:
-			printf("ÇëÊäÈëÒªÍ³¼ÆµÄÈÕÆÚ£¨¸ñÊ½£ºYYYYMMDD£©£º");
+			printf("è¯·è¾“å…¥è¦ç»Ÿè®¡çš„æ—¥æœŸï¼ˆæ ¼å¼ï¼šYYYYMMDDï¼‰ï¼š");
 			scanf(" %8s", task.time);
-			printf("ÇëÊäÈëÂ¥¶°£º");
+			printf("è¯·è¾“å…¥æ¥¼æ ‹ï¼š");
 			scanf(" %19s", task.dorm_building);
-			printf("ÊäÈë·¿¼äºÅ£º");
+			printf("è¾“å…¥æˆ¿é—´å·ï¼š");
 			scanf(" %9s", task.room_number);
-			printf("ÇëÊäÈë¼ì²éÈËÊı£¨Ğ¡ÓÚµÈÓÚ10ÈË£©");
+			printf("è¯·è¾“å…¥æ£€æŸ¥äººæ•°ï¼ˆå°äºç­‰äº10äººï¼‰");
 			scanf("%d", &task.all_inspectors.count);
 			if (task.all_inspectors.count < 0)
 				task.all_inspectors.count = 0;
@@ -580,7 +580,7 @@ void StudentUnionSystem(StudentNode* union_member) // Ñ§Éú»áÖ÷½çÃæ
 				task.all_inspectors.count = 10;
 			for (int i = 0; i < task.all_inspectors.count; i++)
 			{
-				printf("ÇëÊäÈë¼ì²éÕßÃû×Ö£º", i + 1);
+				printf("è¯·è¾“å…¥æ£€æŸ¥è€…åå­—ï¼š", i + 1);
 				scanf(" %49s", task.all_inspectors.inspectors[i]);
 			}
 			for (int i = task.all_inspectors.count; i < 10; i++)
@@ -588,31 +588,31 @@ void StudentUnionSystem(StudentNode* union_member) // Ñ§Éú»áÖ÷½çÃæ
 			task.score = 0.0f;
 			task.is_finished = 0;
 			if (CreateInspection(L, task) == OK)
-				printf("ĞÂÔö¼ì²éÈÎÎñ³É¹¦¡£\n");
+				printf("æ–°å¢æ£€æŸ¥ä»»åŠ¡æˆåŠŸã€‚\n");
 			else
-				printf("ĞÂÔöÊ§°Ü¡£\n");
+				printf("æ–°å¢å¤±è´¥ã€‚\n");
 			break;
 		case 3:
-			printf("ÇëÊäÈëÂ¥¶°£º");
+			printf("è¯·è¾“å…¥æ¥¼æ ‹ï¼š");
 			scanf(" %19s", building);
-			printf("ÊäÈë·¿¼äºÅ£º");
+			printf("è¾“å…¥æˆ¿é—´å·ï¼š");
 			scanf(" %9s", room);
-			printf("ÇëÊäÈë·ÖÊı£º");
+			printf("è¯·è¾“å…¥åˆ†æ•°ï¼š");
 			scanf("%f", &score);
 			if (ModifyInspectionScore(L, building, room, score) == OK)
-				printf("´ò·Ö³É¹¦£¡\n");
+				printf("æ‰“åˆ†æˆåŠŸï¼\n");
 			else
-				printf("ÈÎÎñ²»´æÔÚ\n");
+				printf("ä»»åŠ¡ä¸å­˜åœ¨\n");
 			break;
 		case 4:
-			printf("ÇëÊäÈëÒªÉ¾³ıµÄÂ¥¶°£º");
+			printf("è¯·è¾“å…¥è¦åˆ é™¤çš„æ¥¼æ ‹ï¼š");
 			scanf(" %19s", building);
-			printf("ÊäÈëÒªÉ¾³ıµÄ·¿¼äºÅ£º");
+			printf("è¾“å…¥è¦åˆ é™¤çš„æˆ¿é—´å·ï¼š");
 			scanf(" %9s", room);
 			if (DeleteInspection(L, building, room) == OK)
-				printf("É¾³ı³É¹¦¡£\n");
+				printf("åˆ é™¤æˆåŠŸã€‚\n");
 			else
-				printf("É¾³ıÊ§°Ü£¬Î´ÕÒµ½ÈÎÎñ¡£\n");
+				printf("åˆ é™¤å¤±è´¥ï¼Œæœªæ‰¾åˆ°ä»»åŠ¡ã€‚\n");
 			break;
 		case 6:
 			ShowInspectionRanking(L);
@@ -625,21 +625,21 @@ void StudentUnionSystem(StudentNode* union_member) // Ñ§Éú»áÖ÷½çÃæ
 			break;
 		case 9:
 			if (ExportStatisticsReport(L, all_students, "data/StatisticsReport.txt") == OK)
-				printf("Í³¼Æ±¨±íÒÑµ¼³öµ½ data/StatisticsReport.txt\n");
+				printf("ç»Ÿè®¡æŠ¥è¡¨å·²å¯¼å‡ºåˆ° data/StatisticsReport.txt\n");
 			else
-				printf("µ¼³öÊ§°Ü¡£\n");
+				printf("å¯¼å‡ºå¤±è´¥ã€‚\n");
 			break;
 		case 10:
 		{
 			char date_q[9] = { 0 }, building_q[20] = { 0 }, room_q[10] = { 0 };
-			printf("ÊäÈëÈÕÆÚ(YYYYMMDD)»ò»Ø³µÌø¹ı£º");
+			printf("è¾“å…¥æ—¥æœŸ(YYYYMMDD)æˆ–å›è½¦è·³è¿‡ï¼š");
 			scanf(" %8s", date_q);
-			printf("ÊäÈëÂ¥¶°»ò»Ø³µÌø¹ı£º");
+			printf("è¾“å…¥æ¥¼æ ‹æˆ–å›è½¦è·³è¿‡ï¼š");
 			scanf(" %19s", building_q);
-			printf("ÇëÊäÈë·¿¼äºÅ»òÕßÊ¹ÓÃ»Ø³µÌø¹ı£º");
+			printf("è¯·è¾“å…¥æˆ¿é—´å·æˆ–è€…ä½¿ç”¨å›è½¦è·³è¿‡ï¼š");
 			scanf(" %9s", room_q);
 			if (SearchInspections(L, date_q, building_q, room_q) != OK)
-				printf("Î´ÕÒµ½Æ¥ÅäÏî¡£\n");
+				printf("æœªæ‰¾åˆ°åŒ¹é…é¡¹ã€‚\n");
 		}
 		break;
 		case 11:
@@ -648,26 +648,26 @@ void StudentUnionSystem(StudentNode* union_member) // Ñ§Éú»áÖ÷½çÃæ
 		case 12:
 		{
 			char startDate[9] = { 0 }, endDate[9] = { 0 }, outPath[256] = { 0 };
-			printf("ÇëÊäÈë¿ªÊ¼Ê±¼ä£¨YYYYMMDD£©»òÕßÊ¹ÓÃ»Ø³µ¼ü±íÊ¾²»ÏŞÖÆ:");
+			printf("è¯·è¾“å…¥å¼€å§‹æ—¶é—´ï¼ˆYYYYMMDDï¼‰æˆ–è€…ä½¿ç”¨å›è½¦é”®è¡¨ç¤ºä¸é™åˆ¶:");
 			scanf(" %8s", startDate);
-			printf("ÇëÊäÈë½áÊøÊ±¼ä£¨YYYYMMDD£©»òÕßÊ¹ÓÃ»Ø³µ¼ü±íÊ¾²»ÏŞÖÆ£º");
+			printf("è¯·è¾“å…¥ç»“æŸæ—¶é—´ï¼ˆYYYYMMDDï¼‰æˆ–è€…ä½¿ç”¨å›è½¦é”®è¡¨ç¤ºä¸é™åˆ¶ï¼š");
 			scanf(" %8s", endDate);
-			printf("ÊäÈëµ¼³öÎÄ¼şÂ·¾¶£¨Ê¾Àı data/InspectionsExport.txt£©£º");
+			printf("è¾“å…¥å¯¼å‡ºæ–‡ä»¶è·¯å¾„ï¼ˆç¤ºä¾‹ data/InspectionsExport.txtï¼‰ï¼š");
 			scanf(" %255s", outPath);
 			if (ExportInspectionsByDate(L, startDate, endDate, outPath) == OK)
-				printf("ÒÑµ¼³öµ½ %s\n", outPath);
+				printf("å·²å¯¼å‡ºåˆ° %s\n", outPath);
 			else
-				printf("µ¼³öÊ§°Ü¡£\n");
+				printf("å¯¼å‡ºå¤±è´¥ã€‚\n");
 		}
 		break;
 		case 5:
 			if (SaveInspectionList(L) == OK)
-				printf("ÒÑ±£´æ\n");
+				printf("å·²ä¿å­˜\n");
 			else
-				printf("±£´æÊ§°Ü¡£\n");
+				printf("ä¿å­˜å¤±è´¥ã€‚\n");
 			return;
 		default:
-			printf("ÎŞĞ§Ñ¡Ïî£¬ÇëÖØĞÂÊäÈë¡£\n");
+			printf("æ— æ•ˆé€‰é¡¹ï¼Œè¯·é‡æ–°è¾“å…¥ã€‚\n");
 			break;
 		}
 	}

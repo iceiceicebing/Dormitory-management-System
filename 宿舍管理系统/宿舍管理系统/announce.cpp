@@ -1,4 +1,4 @@
-// announce.cpp：信息公告端操作函数的定义
+﻿// announce.cpp：信息公告端操作函数的定义
 
 #define _CRT_SECURE_NO_WARNINGS 1
 #include "dorm_system.h"

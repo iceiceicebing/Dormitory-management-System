@@ -1,4 +1,4 @@
-// dorm_system.h：存放各类用户信息的结构体定义以及函数声明
+﻿// dorm_system.h：存放各类用户信息的结构体定义以及函数声明
 
 #define _CRT_SECURE_NO_WARNINGS 1
 #pragma once

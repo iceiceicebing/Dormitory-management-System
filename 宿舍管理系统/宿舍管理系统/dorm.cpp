@@ -1,4 +1,4 @@
-// dorm.cpp：载入宿舍数据的操作函数的定义。
+﻿// dorm.cpp：载入宿舍数据的操作函数的定义。
 // 此文件仅是对宿舍信息的载入，不属于其他用户操作的范围。
 
 #define _CRT_SECURE_NO_WARNINGS 1
