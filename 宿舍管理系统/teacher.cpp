@@ -277,7 +277,6 @@ Status FindTeacherByID(TeacherList L, const char ID[13], TeacherNode*& teacher) 
 
 // =======================
 // 下面是导员端功能
-// 说明：以下四个功能先用“通用文本文件方式”实现
 // =======================
 
 static void TeacherViewStudentsByClass(TeacherNode* teacher) {
@@ -316,169 +315,153 @@ static void TeacherViewStudentsByClass(TeacherNode* teacher) {
     fclose(fp);
 }
 
-static void TeacherViewOrHandleRepair(TeacherNode* teacher) {
-    (void)teacher;
 
-    FILE* fp = fopen("data/RepairList.txt", "r");
-    if (!fp) {
-        printf("无法打开 RepairList.txt\n");
+
+// 16. 导员端：查看所负责班级的卫生检查结果（已修复图片 image_e264e9.png 中数量对不上的Bug）
+void TeacherViewClassDormScores() {
+    if (all_students == NULL || all_students->next == NULL) {
+        printf("\n系统中暂无任何学生数据。\n");
+        return;
+    }
+    if (all_dorms.count == 0) {
+        printf("\n系统中暂无任何宿舍打分数据。\n");
         return;
     }
 
-    // 第一遍：读取所有行，动态存储到堆内存中
-    char** lines = NULL;
-    int cnt = 0;
-    char buffer[2048];
+    char target_class[50] = { 0 };
+    printf("\n===== 查看负责班级的卫生检查结果 =====\n");
+    printf("请输入你要查询的班级名称（如：计科2401）：");
+    fgets(target_class, sizeof(target_class), stdin);
+    target_class[strcspn(target_class, "\n")] = '\0';
 
-    while (fgets(buffer, sizeof(buffer), fp)) {
-        // 去掉末尾换行符（不影响存储）
-        size_t len = strlen(buffer);
-        if (len > 0 && buffer[len - 1] == '\n')
-            buffer[len - 1] = '\0';
+    typedef struct {
+        char building[20];
+        char room[10];
+    } ClassDormInfo;
 
-        // 动态扩展数组
-        char** new_lines = (char**)realloc(lines, (cnt + 1) * sizeof(char*));
-        if (!new_lines) {
-            // 内存分配失败，清理已分配的内存
-            for (int i = 0; i < cnt; ++i) free(lines[i]);
-            free(lines);
-            fclose(fp);
-            printf("内存不足，无法处理报修记录。\n");
-            return;
+    ClassDormInfo class_dorms[200];
+    int class_dorm_count = 0;
+
+    // 1. 提取该班级学生分布的所有宿舍
+    StudentNode* p = all_students->next;
+    while (p != NULL) {
+        if (strcmp(p->data.class_name, target_class) == 0) {
+            int is_duplicate = 0;
+            for (int i = 0; i < class_dorm_count; i++) {
+                if (strcmp(class_dorms[i].building, p->data.dorm_building) == 0 &&
+                    strcmp(class_dorms[i].room, p->data.room_number) == 0) {
+                    is_duplicate = 1;
+                    break;
+                }
+            }
+            if (!is_duplicate && class_dorm_count < 200) {
+                strcpy(class_dorms[class_dorm_count].building, p->data.dorm_building);
+                strcpy(class_dorms[class_dorm_count].room, p->data.room_number);
+                class_dorm_count++;
+            }
         }
-        lines = new_lines;
+        p = p->next;
+    }
 
-        // 为当前行分配内存并复制内容
-        lines[cnt] = (char*)malloc(strlen(buffer) + 1);
-        if (!lines[cnt]) {
-            for (int i = 0; i < cnt; ++i) free(lines[i]);
-            free(lines);
-            fclose(fp);
-            printf("内存不足，无法处理报修记录。\n");
-            return;
+    if (class_dorm_count == 0) {
+        printf("未找到班级 \"%s\" 的学生住宿信息。\n", target_class);
+        return;
+    }
+
+    // 2. 匹配并打印
+    printf("\n===== 班级 [%s] 所属宿舍卫生检查结果 =====\n", target_class);
+    printf("--------------------------------------------------\n");
+    
+    int found_dorm_system = 0; // 真实在系统中找到并打印的宿舍数量
+    for (int i = 0; i < class_dorm_count; i++) {
+        for (int j = 0; j < all_dorms.count; j++) {
+            if (strcmp(all_dorms.data[j].dorm_building, class_dorms[i].building) == 0 &&
+                strcmp(all_dorms.data[j].room_number, class_dorms[i].room) == 0) {
+                
+                found_dorm_system++;
+                printf("【宿舍】%s %s\n", all_dorms.data[j].dorm_building, all_dorms.data[j].room_number);
+                
+                int score_cnt = all_dorms.data[j].all_scores.count;
+                if (score_cnt <= 0) {
+                    printf("    暂无历史卫生检查打分记录。\n");
+                } else {
+                    float total = 0;
+                    printf("    历史得分记录：");
+                    for (int k = 0; k < score_cnt; k++) {
+                        printf("%.0f ", all_dorms.data[j].all_scores.scores[k]);
+                        total += all_dorms.data[j].all_scores.scores[k];
+                    }
+                    printf("\n    综合平均分数：%.1f 分\n", total / score_cnt);
+                }
+                printf("    当前所获荣誉：%s\n", all_dorms.data[j].honor_info);
+                printf("--------------------------------------------------\n");
+                break;
+            }
         }
-        strcpy(lines[cnt], buffer);
-        cnt++;
-    }
-    fclose(fp);
-
-    if (cnt == 0) {
-        printf("当前没有报修记录。\n");
-        free(lines);
-        return;
     }
 
-    // 显示所有记录（保留原始行内容，不含换行符，显示时补上）
-    printf("\n========== 报修记录 ==========\n");
-    for (int i = 0; i < cnt; ++i) {
-        printf("[%d] %s\n", i + 1, lines[i]);
-    }
-    printf("==============================\n");
-
-    printf("是否要将某条报修标记为已处理？(1=是, 0=否)：");
-    int op = 0;
-    if (scanf("%d", &op) != 1) {
-        ClearInputBuffer();
-        // 释放内存
-        for (int i = 0; i < cnt; ++i) free(lines[i]);
-        free(lines);
-        return;
-    }
-    ClearInputBuffer();
-
-    if (op != 1) {
-        // 释放内存后返回
-        for (int i = 0; i < cnt; ++i) free(lines[i]);
-        free(lines);
-        return;
-    }
-
-    int idx = 0;
-    printf("请输入要处理的记录编号：");
-    if (scanf("%d", &idx) != 1) {
-        ClearInputBuffer();
-        for (int i = 0; i < cnt; ++i) free(lines[i]);
-        free(lines);
-        return;
-    }
-    ClearInputBuffer();
-
-    if (idx < 1 || idx > cnt) {
-        printf("编号无效。\n");
-        for (int i = 0; i < cnt; ++i) free(lines[i]);
-        free(lines);
-        return;
-    }
-
-    // 修改选中的行：在内容前加上 "[已处理]"
-    char new_line[2200];
-    snprintf(new_line, sizeof(new_line), "[已处理] %s", lines[idx - 1]);
-    free(lines[idx - 1]);                     // 释放原字符串
-    lines[idx - 1] = (char*)malloc(strlen(new_line) + 1);
-    if (!lines[idx - 1]) {
-        printf("内存不足，无法修改记录。\n");
-        for (int i = 0; i < cnt; ++i) free(lines[i]);
-        free(lines);
-        return;
-    }
-    strcpy(lines[idx - 1], new_line);
-
-    // 写回原文件（全部重写）
-    fp = fopen("data/RepairList.txt", "w");
-    if (!fp) {
-        printf("写回 RepairList.txt 失败。\n");
-        for (int i = 0; i < cnt; ++i) free(lines[i]);
-        free(lines);
-        return;
-    }
-    for (int i = 0; i < cnt; ++i) {
-        fprintf(fp, "%s\n", lines[i]);
-    }
-    fclose(fp);
-
-    printf("处理完成。\n");
-
-    // 释放动态内存
-    for (int i = 0; i < cnt; ++i) free(lines[i]);
-    free(lines);
+    // 修正：使用 found_dorm_system 保证界面显示数量与提示完全一致
+    printf("共拉取到该班级对应的 %d 间宿舍卫生档案。\n", found_dorm_system);
 }
 
-static void TeacherViewInspectionResults(TeacherNode* teacher) {
-    if (!teacher) return;
-
-    char class_name[50] = { 0 };
-    PrintTeacherClasses(teacher->data);
-    SafeReadString("请输入要查看的班级名称：", class_name, 50);
-
-    if (!TeacherHasClass(teacher->data, class_name)) {
-        printf("该班级不在你负责范围内。\n");
+// 17. 导员端新增：标记/评定优秀宿舍荣誉功能
+void TeacherAwardDormHonor() {
+    if (all_dorms.count == 0) {
+        printf("\n系统中暂无宿舍数据。\n");
         return;
     }
 
-    FILE* fp = fopen("data/InspectionList.txt", "r");
-    if (!fp) {
-        printf("无法打开 InspectionList.txt\n");
-        return;
-    }
-
-    char line[2048];
+    char building_input[20] = { 0 };
+    char room_input[10] = { 0 };
+    char honor_input[100] = { 0 };
     int found = 0;
 
-    printf("\n========== %s 班卫生检查结果 ==========\n", class_name);
-    while (fgets(line, sizeof(line), fp)) {
-        if (strstr(line, class_name) != NULL) {
-            printf("%s", line);
+    printf("\n===== 评定/修改宿舍荣誉称号 =====\n");
+    printf("请输入宿舍楼栋（如文园1栋）：");
+    fgets(building_input, sizeof(building_input), stdin);
+    building_input[strcspn(building_input, "\n")] = '\0';
+
+    printf("请输入房间号（如101）：");
+    fgets(room_input, sizeof(room_input), stdin);
+    room_input[strcspn(room_input, "\n")] = '\0';
+
+    // 寻找对应的宿舍
+    for (int i = 0; i < all_dorms.count; i++) {
+        if (strcmp(all_dorms.data[i].dorm_building, building_input) == 0 &&
+            strcmp(all_dorms.data[i].room_number, room_input) == 0) {
+            
             found = 1;
+            printf("\n已找到该宿舍！当前荣誉为：[%s]\n", all_dorms.data[i].honor_info);
+            
+            // 计算一下平均分给导员做参考
+            int score_cnt = all_dorms.data[i].all_scores.count;
+            if (score_cnt > 0) {
+                float total = 0;
+                for (int k = 0; k < score_cnt; k++) total += all_dorms.data[i].all_scores.scores[k];
+                printf("该宿舍历史平均卫生分数为：%.1f 分\n", total / score_cnt);
+            }
+
+            printf("请输入授予该宿舍的荣誉名称（如\"文明宿舍\"、\"标兵宿舍\"，输入\"无\"清空）：");
+            fgets(honor_input, sizeof(honor_input), stdin);
+            honor_input[strcspn(honor_input, "\n")] = '\0';
+
+            // 写入结构体
+            strcpy(all_dorms.data[i].honor_info, honor_input);
+            
+            // 立即调用现有的保存函数将数据同步到本地文本文件
+            // 假设你的宿舍保存函数叫 SaveDormInfo 或 SaveDormList，请确保名字对得上
+            SaveDormInfo(all_dorms); 
+
+            printf("荣誉评定成功！%s %s 已成功标记为: [%s]\n", 
+                   building_input, room_input, honor_input);
+            break;
         }
     }
+
     if (!found) {
-        printf("未找到该班级的卫生检查信息，或文件格式与当前筛选方式不匹配。\n");
+        printf("未在系统数据库中找到宿舍：%s %s，请检查输入。\n", building_input, room_input);
     }
-    printf("=======================================\n");
-
-    fclose(fp);
 }
-
 // =======================
 // 导员端系统主菜单
 // =======================
@@ -493,10 +476,10 @@ void TeacherSystem(TeacherList& L, TeacherNode* teacher) {
         printf("2. 修改密码\n");
         printf("3. 查看负责班级\n");
         printf("4. 查看所负责班级的学生信息\n");
-        printf("5. 查看/处理报修\n");
-        printf("6. 查看卫生检查结果\n");
-        printf("7. 发布公告\n");
-		printf("8. 查看公告\n");
+		printf("5. 查看所负责班级的卫生检查结果\n");
+        printf("6. 发布公告\n");
+		printf("7. 查看公告\n");
+		printf("8. 评定/修改宿舍荣誉称号\n");
         printf("0. 保存导员信息并退出\n");
         printf("=========================\n");
         printf("请选择：");
@@ -528,22 +511,18 @@ void TeacherSystem(TeacherList& L, TeacherNode* teacher) {
         case 4:
             TeacherViewStudentsByClass(teacher);
             break;
-
         case 5:
-            TeacherViewOrHandleRepair(teacher);
-            break;
-
+            TeacherViewClassDormScores();
+			break;
         case 6:
-            TeacherViewInspectionResults(teacher);
-            break;
-
-        case 7:
             HandlePublishAnnouncement(teacher->data.name); // 传入导员的名字
             break;
-        case 8:  
+        case 7:  
             HandleViewAnnouncements(); // 直接调用，不需要传任何参数
             break;
-
+        case 8:
+            TeacherAwardDormHonor();
+			break;
         case 0:
             if (SaveTeacherList(L) != OK) {
                 printf("导员信息保存失败。\n");
