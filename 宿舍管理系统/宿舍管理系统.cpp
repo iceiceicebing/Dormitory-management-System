@@ -90,7 +90,7 @@ int main()
 			if (strcmp(ID, "#") == 0) break; // 工号栏输入了#，用户退出宿管登录	
 			if (password_verify(password_real) == QUIT) break;
 			else
-				ManagerSystem(manager); // 登录成功，前往宿管系统
+				ManagerSystem(all_managers, manager);// 登录成功，前往宿管系统
 			break;
 		} // case2
 
