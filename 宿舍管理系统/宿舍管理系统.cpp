@@ -116,7 +116,7 @@ int main()
 			if (strcmp(ID, "#") == 0) break; // 工号栏输入了#，用户退出辅导员登录	
 			if (password_verify(password_real) == QUIT) break;
 			else
-				TeacherSystem(teacher); // 登录成功，前往辅导员系统
+				TeacherSystem(all_teachers,teacher); // 登录成功，前往辅导员系统
 			break;
 		} // case3
 
