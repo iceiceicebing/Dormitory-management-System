@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\0\\Documents\\GitHub\\Dormitory-management-System\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{521D0213-F04A-4167-800D-D7F879359D04}|\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF.vcxproj|C:\\Users\\0\\Documents\\GitHub\\Dormitory-management-System\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\dorm_system.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{521D0213-F04A-4167-800D-D7F879359D04}|\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF.vcxproj|solutionrelative:\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\dorm_system.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{521D0213-F04A-4167-800D-D7F879359D04}|\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF.vcxproj|C:\\Users\\0\\Documents\\GitHub\\Dormitory-management-System\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\manager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{521D0213-F04A-4167-800D-D7F879359D04}|\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF.vcxproj|solutionrelative:\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\manager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -11,12 +15,12 @@
       "RelativeMoniker": "D:0:0:{521D0213-F04A-4167-800D-D7F879359D04}|\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF.vcxproj|solutionrelative:\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\teacher.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{521D0213-F04A-4167-800D-D7F879359D04}|\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF.vcxproj|C:\\Users\\0\\Documents\\GitHub\\Dormitory-management-System\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\student_union.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{521D0213-F04A-4167-800D-D7F879359D04}|\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF.vcxproj|solutionrelative:\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\student_union.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{521D0213-F04A-4167-800D-D7F879359D04}|\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF.vcxproj|C:\\Users\\0\\Documents\\GitHub\\Dormitory-management-System\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\student.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{521D0213-F04A-4167-800D-D7F879359D04}|\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF.vcxproj|solutionrelative:\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\student.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{521D0213-F04A-4167-800D-D7F879359D04}|\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF.vcxproj|C:\\Users\\0\\Documents\\GitHub\\Dormitory-management-System\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\dorm_system.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{521D0213-F04A-4167-800D-D7F879359D04}|\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF.vcxproj|solutionrelative:\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\dorm_system.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{521D0213-F04A-4167-800D-D7F879359D04}|\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF.vcxproj|C:\\Users\\0\\Documents\\GitHub\\Dormitory-management-System\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\student_union.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{521D0213-F04A-4167-800D-D7F879359D04}|\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF.vcxproj|solutionrelative:\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\student_union.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,36 +30,47 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
+              "Title": "student.cpp",
+              "DocumentMoniker": "C:\\Users\\0\\Documents\\GitHub\\Dormitory-management-System\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\student.cpp",
+              "RelativeDocumentMoniker": "\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\student.cpp",
+              "ToolTip": "C:\\Users\\0\\Documents\\GitHub\\Dormitory-management-System\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\student.cpp",
+              "RelativeToolTip": "\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\student.cpp",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-06-06T07:59:51.228Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "manager.cpp",
               "DocumentMoniker": "C:\\Users\\0\\Documents\\GitHub\\Dormitory-management-System\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\manager.cpp",
               "RelativeDocumentMoniker": "\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\manager.cpp",
               "ToolTip": "C:\\Users\\0\\Documents\\GitHub\\Dormitory-management-System\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\manager.cpp",
               "RelativeToolTip": "\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\manager.cpp",
-              "ViewState": "AgIAAFEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAKUBAAAAAAAAAAAYwK8BAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-06-06T06:00:04.465Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-06T06:00:04.465Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "student_union.cpp",
               "DocumentMoniker": "C:\\Users\\0\\Documents\\GitHub\\Dormitory-management-System\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\student_union.cpp",
               "RelativeDocumentMoniker": "\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\student_union.cpp",
               "ToolTip": "C:\\Users\\0\\Documents\\GitHub\\Dormitory-management-System\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\student_union.cpp",
               "RelativeToolTip": "\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\student_union.cpp",
-              "ViewState": "AgIAAC8BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAIMBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-06-06T05:59:37.305Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "teacher.cpp",
               "DocumentMoniker": "C:\\Users\\0\\Documents\\GitHub\\Dormitory-management-System\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\teacher.cpp",
               "RelativeDocumentMoniker": "\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\teacher.cpp",
@@ -67,15 +82,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "dorm_system.h",
               "DocumentMoniker": "C:\\Users\\0\\Documents\\GitHub\\Dormitory-management-System\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\dorm_system.h",
               "RelativeDocumentMoniker": "\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\dorm_system.h",
               "ToolTip": "C:\\Users\\0\\Documents\\GitHub\\Dormitory-management-System\\\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\dorm_system.h",
               "RelativeToolTip": "\u5BBF\u820D\u7BA1\u7406\u7CFB\u7EDF\\dorm_system.h",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAAAEEAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-06-06T05:57:39.564Z"
+              "WhenOpened": "2026-06-06T05:57:39.564Z",
+              "EditorCaption": ""
             }
           ]
         }
