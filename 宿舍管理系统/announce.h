@@ -9,6 +9,6 @@ Status AnnounceInsert(AnnounceList& L, int i, AnnounceInfo e);
 Status SaveAnnounceList(AnnounceList& L);
 void HandlePublishAnnouncement(const char* sender_name);
 void HandleViewAnnouncements();
-
-
+Status AnnounceDelete(AnnounceList& L, int i);
+void HandleDeleteAnnouncement();
 #endif // ANNOUNCEMENT_H

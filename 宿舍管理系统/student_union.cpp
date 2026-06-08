@@ -2,6 +2,7 @@
 
 #define _CRT_SECURE_NO_WARNINGS 1
 #include "dorm_system.h"
+#include"announce.h"
 
 // 按楼栋存储人数
 typedef struct
@@ -524,8 +525,8 @@ void StudentUnionSystem(StudentNode* union_member)
 
 	int choice;
 	do {
-
-		printf("\n========== 学生会任务管理 ==========\n");
+		system("cls");
+		printf("\n========== 学生会端 ==========\n");
 		printf("欢迎您，%s（学号：%s，职务：%s）\n",
 			union_member->data.name,
 			union_member->data.ID,
@@ -536,9 +537,12 @@ void StudentUnionSystem(StudentNode* union_member)
 		printf("  3. 按楼栋统计学生人数\n");
 		printf("  4. 按时间统计宿舍在寝情况\n");
 		printf("  5. 导出统计报表到文本文件\n");
+		printf("  6. 发布公告\n ");
+		printf(" 7. 查看所有公告\n");
+		printf("  8. 删除公告\n");
 		printf("  0. 退出学生会端\n");
 		printf("----------------------------------------\n");
-		printf("请选择操作（0-5）：");
+		printf("请选择操作（0-7）：");
 
 		scanf("%d", &choice);
 		getchar();  // 吸收回车符
@@ -559,6 +563,14 @@ void StudentUnionSystem(StudentNode* union_member)
 		case 5:
 			ExportReport();                // 导出报表
 			break;
+		case 6:
+			HandlePublishAnnouncement(union_member->data.name); // 发布公告，传入发布者姓名
+			break;
+		case 7:
+			HandleViewAnnouncements(); // 查看公告
+			break;
+		case 8:
+			HandleDeleteAnnouncement();//删除公告
 		case 0:
 			printf("正在退出学生会系统，感谢使用！\n");
 			break;
