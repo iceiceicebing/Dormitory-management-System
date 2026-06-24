@@ -170,3 +170,80 @@ void HandleViewAnnouncements() {
         p = p->next;
     }
 }
+
+// 删除信息公告表中第 i 个结点
+Status AnnounceDelete(AnnounceList& L, int i) 
+{
+    if (i < 1 || L == NULL || L->next == NULL) return ERROR;   // 空表或 i 非法
+
+    AnnounceNode* q = L;      // 指向头结点
+    AnnounceNode* p = L->next;
+    int k = 1;                // 当前 p 指向第 k 个结点
+
+    // 找到第 i 个结点的前驱
+    while (p != NULL && k < i)
+    {
+        q = p;
+        p = p->next;
+        k++;
+    }
+
+    if (p == NULL) return ERROR;   // i 超过了链表长度
+
+    // 删除 p 结点
+    q->next = p->next;
+    free(p);
+    return OK;
+}
+
+void HandleDeleteAnnouncement() 
+{
+    if (announcement_board == NULL || announcement_board->next == NULL) 
+    {
+        printf("\n暂无任何公告，无法删除。\n");
+        return;
+    }
+
+    // 先展示所有公告（带序号）
+    printf("\n===== 现有公告列表 =====\n");
+    AnnounceNode* p = announcement_board->next;
+    int idx = 1;
+    while (p != NULL)
+    {
+        const char* type_str = "其他";
+        if (p->data.type == 0) type_str = "重要通知";
+        else if (p->data.type == 1) type_str = "寻物启事";
+
+        printf("%d. [%s] %s (发布人: %s, 日期: %s)\n",
+            idx, type_str, p->data.heading, p->data.sender, p->data.time);
+        p = p->next;
+        idx++;
+    }
+
+    printf("\n请输入要删除的公告序号 (1-%d)：", idx - 1);
+    int del_idx;
+    if (scanf("%d", &del_idx) != 1) {
+        printf("输入无效，请重新选择。\n");
+        while (getchar() != '\n');
+        return;
+    }
+    getchar(); // 清空换行符
+
+    // 执行删除
+    Status ret = AnnounceDelete(announcement_board, del_idx);
+    if (ret == OK)
+    {
+        // 保存修改到文件
+        if (SaveAnnounceList(announcement_board) == OK)
+        {
+            printf("公告删除成功！\n");
+        }
+        else 
+        {
+            printf("公告删除成功，但保存文件时出错！\n");
+        }
+    }
+    else {
+        printf("删除失败，请检查序号是否正确。\n");
+    }
+}

@@ -2,6 +2,7 @@
 
 #define _CRT_SECURE_NO_WARNINGS 1
 #include "dorm_system.h"
+#include"announce.h"
 
 // 按楼栋存储人数
 typedef struct
@@ -37,7 +38,8 @@ Status LoadInspectionList(InspectionList& L) {
 		temp.all_inspectors.inspectors[8],
 		temp.all_inspectors.inspectors[9],
 		&temp.all_inspectors.count,
-		&temp.score, &temp.is_finished) == 16) {  // 正确检查返回值
+		&temp.score, &temp.is_finished) == 16)
+	{  // 正确检查返回值
 		InspectionNode* s = (InspectionNode*)malloc(sizeof(InspectionNode));
 
 		s->data = temp;
@@ -51,15 +53,16 @@ Status LoadInspectionList(InspectionList& L) {
 
 Status InspectionInsert(InspectionList& L, int i, InspectionInfo e)
 {
-	// 从头开始，找到第i个位置，进行学生会任务信息结点的插入
 	int k = 0;
 	InspectionNode* p = L->next, * q = L, * s;
-	if (i < 1) // i非法（过小，i至少为1）
+	if (i < 1) 
 		return ERROR;
-	while (q) {
+	while (q)
+	{
 		k++; // k最开始为1，表示到了第一个和第二个结点之间
-		if (k == i) {
-			// 如果到了第i个位置，则把新元素插入在q与p之间
+		if (k == i)
+		{
+		
 			s = (InspectionNode*)malloc(sizeof(InspectionNode)); // 生成待插入结点
 			s->data = e;
 			s->next = p; // 修改链接
@@ -385,6 +388,27 @@ Status StatByTime()
 	return OK;
 }
 
+// 收集优秀宿舍信息并显示
+void CollectCivilDorms() {
+	if (all_dorms.count == 0) {
+		printf("无宿舍数据。\n");
+		return;
+	}
+	printf("\n===== 优秀宿舍列表 =====\n");
+	int found = 0;
+	for (int i = 0; i < all_dorms.count; i++) {
+		DormInfo* d = &all_dorms.data[i];
+		// 假设 honor_info 中不是 "无" 或空字符串即为有荣誉
+		if (strcmp(d->honor_info, "无") != 0 && strlen(d->honor_info) > 0) {
+			found = 1;
+			printf("楼栋：%s，房间：%s，荣誉：%s\n",
+				d->dorm_building, d->room_number, d->honor_info);
+		}
+	}
+	if (!found) {
+		printf("暂无文明宿舍。\n");
+	}
+}
 
 // 导出统计报表
 Status ExportReport()
@@ -400,11 +424,13 @@ Status ExportReport()
 	GetCurrentDate(currentDate);
 
 	// 写入报表头
+	
 	fprintf(report, "===== 宿舍管理系统统计报表 =====\n");
 	fprintf(report, "生成时间：%s\n\n", currentDate);
 
+	fprintf(report,"=========");
 	// ================= 1. 宿舍卫生排名 =================
-	fprintf(report, "--- 宿舍卫生排名（按平均分） ---\n");
+	fprintf(report, "--- 一、宿舍卫生排名（按平均分） ---\n");
 	if (all_dorms.count == 0)
 	{
 		fprintf(report, "暂无宿舍数据。\n");
@@ -448,7 +474,7 @@ Status ExportReport()
 	}
 
 	// ================= 2. 按楼栋统计学生人数 =================
-	fprintf(report, "\n--- 各楼栋学生人数统计 ---\n");
+	fprintf(report, "\n--- 二、各楼栋学生人数统计 ---\n");
 	if (!all_students || !all_students->next)
 	{
 		fprintf(report, "暂无学生数据。\n");
@@ -489,7 +515,7 @@ Status ExportReport()
 	}
 
 	// ================= 3. 当前在寝情况统计 =================
-	fprintf(report, "\n--- 当前在寝情况 ---\n");
+	fprintf(report, "\n--- 三、学生当前在寝情况 ---\n");
 	if (!all_students || !all_students->next)
 	{
 		fprintf(report, "暂无学生数据。\n");
@@ -507,10 +533,33 @@ Status ExportReport()
 		fprintf(report, "在寝人数：%d\n", inDorm);
 		fprintf(report, "离寝人数：%d\n", total - inDorm);
 	}
-
+	// ================= 4. 优秀宿舍（文明宿舍）列表 =================
+	fprintf(report, "\n--- 四、优秀宿舍（获得荣誉） ---\n");
+	int civilCount = 0;
+	for (int i = 0; i < all_dorms.count; ++i) {
+		DormInfo* d = &all_dorms.data[i];
+		if (strcmp(d->honor_info, "无") != 0 && strlen(d->honor_info) > 0) {
+			if (civilCount == 0) {
+				fprintf(report, "楼栋\t\t房间\t\t\t荣誉\n");
+			}
+			civilCount++;
+			float sum = 0;
+			for (int j = 0; j < d->all_scores.count; ++j) sum += d->all_scores.scores[j];
+			float avg = (d->all_scores.count > 0) ? sum / d->all_scores.count : 0;
+			fprintf(report, "%-10s\t%-6s\t%-10s\n",
+				d->dorm_building, d->room_number, d->honor_info);
+		}
+	}
+	if (civilCount == 0) {
+		fprintf(report, "暂无优秀宿舍。\n");
+	}
+	else {
+		fprintf(report, "\n共 %d 个优秀宿舍。\n", civilCount);
+	}
 	fclose(report);
 	printf("统计报表已导出到 data/stat_report.txt\n");
 }
+
 
 // 学生会总菜单函数
 void StudentUnionSystem(StudentNode* union_member)
@@ -524,8 +573,8 @@ void StudentUnionSystem(StudentNode* union_member)
 
 	int choice;
 	do {
-
-		printf("\n========== 学生会任务管理 ==========\n");
+		system("cls");
+		printf("\n========== 学生会端 ==========\n");
 		printf("欢迎您，%s（学号：%s，职务：%s）\n",
 			union_member->data.name,
 			union_member->data.ID,
@@ -536,9 +585,13 @@ void StudentUnionSystem(StudentNode* union_member)
 		printf("  3. 按楼栋统计学生人数\n");
 		printf("  4. 按时间统计宿舍在寝情况\n");
 		printf("  5. 导出统计报表到文本文件\n");
+		printf("  6. 发布公告\n ");
+		printf(" 7. 查看所有公告\n");
+		printf("  8. 删除公告\n");
+		printf("  9. 查看优秀宿舍\n");
 		printf("  0. 退出学生会端\n");
 		printf("----------------------------------------\n");
-		printf("请选择操作（0-5）：");
+		printf("请选择操作（0-7）：");
 
 		scanf("%d", &choice);
 		getchar();  // 吸收回车符
@@ -559,6 +612,16 @@ void StudentUnionSystem(StudentNode* union_member)
 		case 5:
 			ExportReport();                // 导出报表
 			break;
+		case 6:
+			HandlePublishAnnouncement(union_member->data.name); // 发布公告，传入发布者姓名
+			break;
+		case 7:
+			HandleViewAnnouncements(); // 查看公告
+			break;
+		case 8:
+			HandleDeleteAnnouncement();//删除公告
+		case 9:
+			CollectCivilDorms();//收集优秀宿舍
 		case 0:
 			printf("正在退出学生会系统，感谢使用！\n");
 			break;
