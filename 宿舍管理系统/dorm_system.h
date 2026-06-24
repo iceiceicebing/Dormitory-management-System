@@ -187,6 +187,20 @@ Status FindStudent(StudentList L, char ID[13], char password[50], StudentNode*& 
 
 void StudentSystem(StudentNode* student); // 学生端具体操作
 // 之后的操作函数声明可以写在这后面……
+//1. 抢宿舍、选床位
+Status SelectDormBed(StudentNode* stu, DormList& dormList, char build[], char room[], int bed);
+//2. 电费充值、余额查询
+void QueryElecBill(StudentNode* stu, DormList& dormList);
+Status RechargeElec(StudentNode* stu, DormList& dormList, float money);
+//3. 各类申请提交（请假/校外退宿/转宿）
+void ApplyLeave(StudentNode* stu, char start[], char end[], char reason[]);
+void ApplyOutDorm(StudentNode* stu, char start[], char end[], char reason[]);
+void ApplyChangeDorm(StudentNode* stu, char start[], char end[], char reason[]);
+//4. 查看个人信息 + 所有申请审批状态
+void ShowStudentInfo(StudentNode* stu);
+void ShowAllApplyStatus(StudentNode* stu);
+// 辅助：根据学生学号查找对应宿舍下标（内部调用）
+int FindDormByStuID(DormList& dormList, char stuID[]);
 
 	// (2) 宿舍信息存储
 
